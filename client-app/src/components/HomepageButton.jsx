@@ -19,14 +19,15 @@ const styles = StyleSheet.create({
     width: 180,
     height: 70,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: "black",    
   },
   text: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-    textAlign: "center",
-    flex: 1,
+    
+    
   },
 });
 

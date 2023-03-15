@@ -1,20 +1,28 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet} from "react-native";
 import HomepageButton from "../components/HomepageButton";
 
 
 const Home = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>    
       <Text style={styles.appName}>App Name</Text>
       <View style={styles.buttonGroup}>
         <View style={styles.buttonRow}>
-          <HomepageButton title="New Tournament" onPress={() => console.log("New Tournament button pressed")} />
-          <HomepageButton title="My Tournaments" onPress={() => console.log("My Tournaments button pressed")} />
+          <HomepageButton title="My Profile" 
+            onPress={() => navigation.navigate("MyProfile")} />
+          <HomepageButton title="My Tournaments" 
+            onPress={() => navigation.navigate("UserTournaments")} />
         </View>
         <View style={styles.buttonRow}>
-          <HomepageButton title="Participate in a Tournament" onPress={() => console.log("Participate in a Tournament button pressed")} />
-          <HomepageButton title="My Profile" onPress={() => console.log("My Profile button pressed")} />
+          <HomepageButton title="Participate to Tournament" 
+            onPress={() => navigation.navigate("ParticipateToTournament")} />
+          <HomepageButton title="Create Tournament" 
+            onPress={() => navigation.navigate("CreateTournament")} />
         </View>
       </View>
       

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function UserTournaments() {
+function MyProfile() {
   const navigation = useNavigation();
 
   return (
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserTournaments;
+export default MyProfile;

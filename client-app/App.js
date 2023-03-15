@@ -1,31 +1,46 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
 import Navbar from "./src/views/Navbar";
 import Home from "./src/views/Home";
-import { LinearGradient } from "expo-linear-gradient";
 import Footer from "./src/views/Footer";
+import MyProfile from "./src/views/MyProfile";
+import ParticipateToTournament from "./src/views/ParticipateToTournament"
+import CreateTournament from "./src/views/CreateTournament";
+import UserTournaments from "./src/views/UserTournaments"
 
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <LinearGradient 
-    colors={['#4c669f', '#3b5998', '#192f6a']}
-    style={styles.container}>
-      <Navbar userName="User Name"
-      style={{
-      position: 'relative',
-      zIndex: 1
-  }}/>
-      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-      <Home />
-      <Footer />
-    </LinearGradient>
+    <NavigationContainer>
+      <LinearGradient 
+        colors={['#4c669f', '#3b5998', '#192f6a']}
+        style={styles.container}>
+        <Navbar userName="User Name"
+          style={{
+            position: 'relative',
+            zIndex: 1
+          }}/>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+          <Stack.Screen name="MyProfile" component={MyProfile} />
+          <Stack.Screen name="ParticipateToTournament" component={ParticipateToTournament} />
+          <Stack.Screen name="CreateTournament" component={CreateTournament} />
+          <Stack.Screen name="UserTournaments" component={UserTournaments} />
+        </Stack.Navigator>
+        <Footer />
+      </LinearGradient>
+    </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundImage: "linear-gradient(to right, #4880EC, #019CAD)",
     flex: 1,
   },
 });
