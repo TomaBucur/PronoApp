@@ -20,20 +20,21 @@ const App = () => {
       <LinearGradient 
         colors={['#4c669f', '#3b5998', '#192f6a']}
         style={styles.container}>
-        <Navbar userName="User Name"
-          style={{
-            position: 'relative',
-            zIndex: 1
-          }}/>
+          
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
-          <Stack.Screen name="MyProfile" component={MyProfile} />
-          <Stack.Screen name="ParticipateToTournament" component={ParticipateToTournament} />
-          <Stack.Screen name="CreateTournament" component={CreateTournament} />
-          <Stack.Screen name="UserTournaments" component={UserTournaments} />
-        </Stack.Navigator>
-        <Footer />
+          <Navbar userName="User Name"
+            style={{
+              position: 'relative',
+              zIndex: 1
+          }}/>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+            <Stack.Screen name="MyProfile" component={MyProfile} />
+            <Stack.Screen name="ParticipateToTournament" component={ParticipateToTournament} />
+            <Stack.Screen name="CreateTournament" component={CreateTournament} />
+            <Stack.Screen name="UserTournaments" component={UserTournaments} />
+          </Stack.Navigator>
+          <Footer />
       </LinearGradient>
     </NavigationContainer>
   );

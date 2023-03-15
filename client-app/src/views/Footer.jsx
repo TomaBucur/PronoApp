@@ -18,10 +18,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: 'absolute',
     bottom: 0,
+    left: 0,
+    right: 0,
     width: '100%',
   },
   footerText: {
-    color: "white",
+    color: "black",
     fontSize: 12,
   },
 });

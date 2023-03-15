@@ -7,7 +7,7 @@ function UserTournaments() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Profile</Text>
+      <Text style={styles.text}>My Tournaments</Text>
     </View>
   );
 }
