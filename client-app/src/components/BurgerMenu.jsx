@@ -1,13 +1,20 @@
 import React, { useState } from "react";
-import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
+import { TouchableOpacity, StyleSheet, View, Text, TouchableWithoutFeedback } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useAtom } from "jotai";
+import { navigationState } from "../../state/state";
+
+
 
 const BurgerMenu = ({ onLogOutPress, onSettingsPress, 
                       onAboutUsPress, onContactPress }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useAtom(navigationState.burgerMenu);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -19,16 +26,19 @@ const BurgerMenu = ({ onLogOutPress, onSettingsPress,
       </TouchableOpacity>
       {isMenuOpen && (
         <View style={styles.menuContainer}>
-          <TouchableOpacity onPress={onLogOutPress}>
+          <TouchableOpacity
+            // onPress={onLogOutPress}
+            onPress={() => navigation.navigate('')}
+          >
             <Text style={styles.menuText}>Log Out</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={onSettingsPress}>
+          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
             <Text style={styles.menuText}>Settings</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={onAboutUsPress}>
+          <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
             <Text style={styles.menuText}>About Us</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={onContactPress}>
+          <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
             <Text style={styles.menuText}>Contact</Text>
           </TouchableOpacity>
         </View>

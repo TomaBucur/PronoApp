@@ -8,6 +8,7 @@ const Home = () => {
 
   const navigation = useNavigation();
 
+
   return (
     <View style={styles.container}>    
       <Text style={styles.appName}>App Name</Text>
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 1
+  //  marginHorizontal: 100
   },
   buttonRow: {
     flexDirection: "row",
