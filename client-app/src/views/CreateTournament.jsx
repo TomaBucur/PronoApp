@@ -16,14 +16,14 @@ function CreateTournament() {
       <View style={styles.tournamentNameWrapper}>
 
         {!isEditable ?
-          <Text style={styles.tournamentWrapperLeft}>{tournamentName}</Text> : 
-          <TextInput style={styles.textInput} onChangeText={text => setTournamentName(text)}/>
+          <Text style={styles.tournamentName}>{tournamentName}</Text> : 
+          <TextInput style={styles.tournamentNameInput} defaultValue={tournamentName} onChangeText={text => setTournamentName(text)}/>
           }  
         
         <TouchableOpacity style={styles.tournamentWrapperRight}
           onPress={handleEditNamePress}
         >
-            <Text>{isEditable ? 'Save' : 'Edit'} </Text>
+            <Text style={styles.editButton}>{isEditable ? 'Save' : 'Edit'} </Text>
           </TouchableOpacity> 
       </View>
      
@@ -34,10 +34,30 @@ function CreateTournament() {
 }
 
 const styles = StyleSheet.create({
+  tournamentNameInput: {
+    fontSize: 30,
+    fontWeight: "bold",
+    // textAlign: "center",
+    // marginVertical: 20,
+    borderWidth: 2,
+    minWidth: 50,
+    maxWidth: 250,
+  },
+  tournamentName: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  editButton: {
+    // alignItems: 'center',
+    // textAlign: 'center',
+    // textAlignVertical: 'center',
+    marginVertical: 'auto',
+    // justifyContent: 'center',
+  },
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   text: {
     fontSize: 20,
@@ -48,7 +68,8 @@ const styles = StyleSheet.create({
     // justifyContent: 'space-between',
     // alignItems: 'center',
     flexDirection: 'row',
-    gap: 10
+    gap: 10,
+    alignItems: 'center'
     // paddingHorizontal: 10
   },
   tournamentWrapperLeft: {
@@ -59,11 +80,6 @@ const styles = StyleSheet.create({
     // flexDirection: 'row',
     // alignItems: 'center'
   },
-  textInput: {
-    borderWidth: 2,
-    minWidth: 50,
-    maxWidth: 250,
-  }
 });
 
 export default CreateTournament;
