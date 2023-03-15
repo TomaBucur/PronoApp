@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 function CreateTournament() {
   const navigation = useNavigation();
   const [isEditable, setIsEditable] = useState(false);
   const [tournamentName, setTournamentName] = useState("Tournament Name")
+  const [isPublic, setIsPublic] = useState(false);
 
   const handleEditNamePress = () => {
     setIsEditable(oldValue => !oldValue);
@@ -26,7 +27,17 @@ function CreateTournament() {
             <Text style={styles.editButton}>{isEditable ? 'Save' : 'Edit'} </Text>
           </TouchableOpacity> 
       </View>
-     
+      <View style={styles.tournamentNameWrapper}>
+        <Button title='Add championship' />
+        <Switch
+          value={isPublic}
+          onValueChange={() => setIsPublic(oldState => !oldState)}
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={isPublic ? "#f5dd4b" : "#f4f3f4"}
+        />
+         <Text style={styles.label}>{isPublic ? "Public" : "Private"}</Text>
+      </View>
+      
       
       <Text style={styles.text}>Create Tournament</Text>
     </View>
@@ -80,6 +91,9 @@ const styles = StyleSheet.create({
     // flexDirection: 'row',
     // alignItems: 'center'
   },
+  label: {
+    marginLeft: 8
+  }
 });
 
 export default CreateTournament;
