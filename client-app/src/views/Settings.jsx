@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function Settins() {
+function Settings() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Settins</Text>
+      <Text style={styles.text}>Settings</Text>
     </View>
   );
 }
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Settins;
+export default Settings;
