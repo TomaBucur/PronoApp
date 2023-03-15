@@ -37,6 +37,10 @@ function CreateTournament() {
 
   const [termsChecked, setTermsChecked] = useState(false);
 
+  const handleSubmit = () => {
+    // TODO: Implement submission logic here
+    console.log("Tournament created!");
+  };
 
   return (
     <View style={styles.container}>
@@ -74,10 +78,12 @@ function CreateTournament() {
         <Text style={styles.label}>{isPublic ? "Private" : "Public"}</Text>
       </View>
 
-      <Text style={styles.text}>Create Tournament</Text>
+      <TouchableOpacity style={styles.createButton} onPress={handleSubmit}>
+        <Text style={styles.createButtonText}>Create Tournament</Text>
+      </TouchableOpacity>
 
       <View style={styles.termsContainer}>
-      <TouchableOpacity onPress={() => setTermsChecked(!termsChecked)}>
+        <TouchableOpacity onPress={() => setTermsChecked(!termsChecked)}>
           <View style={styles.checkButton}>
             {termsChecked && (
               <Image
@@ -187,6 +193,19 @@ const styles = StyleSheet.create({
   termsData: {
     marginTop: 20,
     fontSize: 14,
+  },
+  createButton: {
+    backgroundColor: "#007AFF",
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  createButtonText: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 
