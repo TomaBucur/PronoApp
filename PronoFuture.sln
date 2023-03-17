@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PronoFuture", "PronoFuture\PronoFuture.csproj", "{1F34F98F-DFEB-4480-A0E1-FB676C861A07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PronoFuture", "PronoFuture\PronoFuture.csproj", "{1F34F98F-DFEB-4480-A0E1-FB676C861A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PronoFuture.Tests", "PronoFuture.Test\PronoFuture.Tests.csproj", "{89D1A22E-2701-4CF4-AF2E-B8FD95F39818}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1F34F98F-DFEB-4480-A0E1-FB676C861A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F34F98F-DFEB-4480-A0E1-FB676C861A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F34F98F-DFEB-4480-A0E1-FB676C861A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D1A22E-2701-4CF4-AF2E-B8FD95F39818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D1A22E-2701-4CF4-AF2E-B8FD95F39818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D1A22E-2701-4CF4-AF2E-B8FD95F39818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D1A22E-2701-4CF4-AF2E-B8FD95F39818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

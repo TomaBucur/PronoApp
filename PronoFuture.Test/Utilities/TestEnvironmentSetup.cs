@@ -1,25 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PronoFuture.Data;
 using PronoFuture.Models;
 
-namespace PronoFuture.Data
+namespace PronoFuture.Tests.Utilities
 {
-    class Program
+    internal class TestEnvironmentSetup
     {
-        static void Main(string[] args)
+        public async Task Seed()
         {
             var serviceProvider = new ServiceCollection()
-                .AddDbContext<AppDbContext>(options => options.UseSqlServer("YourConnectionString"))
+                .AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=DESKTOP-26MRVED;Initial Catalog=Prono;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"))
                 .BuildServiceProvider();
 
             using (var context = serviceProvider.GetService<AppDbContext>())
             {
+                if (!context.Users.Any() && !context.Championships.Any())
+                {
+                    // Make sure the db isempty before adding the seed data
+                    context.Users.RemoveRange(context.Users);
+                    context.Championships.RemoveRange(context.Championships);
+                    await context.SaveChangesAsync();
+                }
+
                 // Create Users
                 var user1 = new User
                 {
-                    Name = "John Doe",
+                    Name = "Dan Negru",
                     Email = "johndoe@example.com",
                     Password = "password1",
                     Phone = "555-1234",
@@ -29,7 +40,7 @@ namespace PronoFuture.Data
 
                 var user2 = new User
                 {
-                    Name = "Jane Doe",
+                    Name = "Ionut Cusca",
                     Email = "janedoe@example.com",
                     Password = "password2",
                     Phone = "555-5678",
@@ -121,10 +132,8 @@ namespace PronoFuture.Data
                 // Add the data to the context and save changes
                 context.Championships.AddRange(championships);
                 context.Users.AddRange(user1, user2);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
     }
 }
-
-
