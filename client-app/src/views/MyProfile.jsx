@@ -8,82 +8,16 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import getMockData from "../components/MockDataProvider";
 
 const MyProfile = () => {
   const navigation = useNavigation();
   const [detailsExpanded, setDetailsExpanded] = useState(false);
-  
-  const mockUser = {
-    id: 1,
-    name: "Vlad the Impaler",
-    email: "vlad@example.com",
-    password: "password123",
-    phone: "123-456-7890",
-    goodPronostics: 10,
-    badPronostics: 5,
-    registrationDate: new Date("2023-01-01"),
-    userRole: "USER",
-    tournamentId: 1,
-    // Add Tournaments and UserPronosticChampionship when available
-  };
 
-  const mockTournaments = [
-    {
-      id: 1,
-      name: "Tournament 1",
-      startingDate: new Date("2023-04-01"),
-      endingDate: new Date("2023-04-15"),
-      tournamentStatus: "OnGoing",
-      championshipName: "La Liga",
-      signedPlayers: 24,
-      championshipId: 1,
-      userId: 1,
-    },
-    {
-      id: 2,
-      name: "Tournament 2",
-      startingDate: new Date("2023-05-01"),
-      endingDate: new Date("2023-05-15"),
-      tournamentStatus: "Open To Registration",
-      championshipName: "Primera Division",
-      signedPlayers: 24,
-      championshipId: 1,
-      userId: 1,
-    },
-    {
-      id: 3,
-      name: "Tournament 3",
-      startingDate: new Date("2023-06-01"),
-      endingDate: new Date("2023-06-15"),
-      tournamentStatus: "Close to Registration",
-      championshipName: "Premier League",
-      signedPlayers: 24,
-      championshipId: 2,
-      userId: 1,
-    },
-    {
-      id: 4,
-      name: "Tournament 4",
-      startingDate: new Date("2023-07-01"),
-      endingDate: new Date("2023-07-15"),
-      tournamentStatus: "Ended",
-      championshipName: "Liga 1 Bergembier",
-      signedPlayers: 35,
-      championshipId: 2,
-      userId: 1,
-    },
-    {
-      id: 5,
-      name: "Tournament 5",
-      startingDate: new Date("2023-08-01"),
-      endingDate: new Date("2023-08-15"),
-      tournamentStatus: "Upcoming",
-      championshipName: "BundesLiga",
-      signedPlayers: 30,
-      championshipId: 3,
-      userId: 1,
-    },
-  ];
+  const mockUser = getMockData().users[0];
+
+  const mockData = getMockData();
+  const mockTournaments = mockData.tournaments;
 
   const formatDate = (date) => {
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -119,23 +53,26 @@ const MyProfile = () => {
           <View style={styles.details}>
             <Text>Email: {mockUser.email}</Text>
             <Text>Phone: {mockUser.phone}</Text>
-            <Text>Registration Date: {formatDate(mockUser.registrationDate)}</Text>
+            <Text>
+              Registration Date: {formatDate(mockUser.registrationDate)}
+            </Text>
             <Text>User Role: {mockUser.userRole}</Text>
+            <View style={styles.achievements}>
+              <Text style={styles.achievementsTitle}>Achievements</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("UserAchievements")}
+              >
+                <Text style={styles.achievementsCount}>
+                  {mockUser.goodPronostics + mockUser.badPronostics}
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
-        <Text style={styles.expandCollapseArrow}>{detailsExpanded ? "▲" : "▼"}</Text>
+        <Text style={styles.expandCollapseArrow}>
+          {detailsExpanded ? "▲" : "▼"}
+        </Text>
       </TouchableOpacity>
-
-      <View style={styles.achievements}>
-        <Text style={styles.achievementsTitle}>Achievements</Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("UserAchievements")}
-        >
-          <Text style={styles.achievementsCount}>
-            {mockUser.goodPronostics + mockUser.badPronostics}
-          </Text>
-        </TouchableOpacity>
-      </View>
 
       <Text style={styles.tournamentsTitle}>My Tournaments</Text>
       <ScrollView
@@ -154,11 +91,19 @@ const MyProfile = () => {
             }
           >
             <Text style={styles.tournamentName}>{tournament.name}</Text>
-            <Text style={styles.championshipName}>{tournament.championshipName}</Text>
-            <Text style={styles.startingDate}>Starting Date: {tournament.startingDate.toLocaleDateString('en-GB')}</Text>
-            <Text style={styles.endingDate}>Ending Date: {tournament.endingDate.toLocaleDateString('en-GB')}</Text>
-            <Text style={styles.signedPlayers}>Participants: {tournament.signedPlayers}</Text>
-
+            <Text style={styles.championshipName}>
+              {tournament.championshipName}
+            </Text>
+            <Text style={styles.startingDate}>
+              Starting Date:{" "}
+              {tournament.startingDate.toLocaleDateString("en-GB")}
+            </Text>
+            <Text style={styles.endingDate}>
+              Ending Date: {tournament.endingDate.toLocaleDateString("en-GB")}
+            </Text>
+            <Text style={styles.signedPlayers}>
+              Participants: {tournament.signedPlayers}
+            </Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
