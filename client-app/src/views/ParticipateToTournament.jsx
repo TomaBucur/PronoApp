@@ -68,7 +68,14 @@ function ParticipateToTournament() {
   };
 
   const sortByStatus = (status) => {
-    const sorted = tournaments.filter((tournament) => tournament.status === status);
+    const sorted = [...tournaments] // Create a shallow copy of the tournaments array
+      .filter((tournament) => status === 'all' || tournament.status === status) // Filter by status if status is not 'all'
+      .sort((a, b) => { // Sort by status in ascending order
+        if (a.status < b.status) return -1;
+        if (a.status > b.status) return 1;
+        return 0;
+      });
+  
     setSortedTournaments(sorted);
   };
 
@@ -88,20 +95,20 @@ function ParticipateToTournament() {
       </View>
       {/* Sorting feature*/}
       <View style={styles.sortingContainer}>
-  <Text style={styles.sortingLabel}>Sort by:</Text>
-  <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('all')}>
-    <Text style={styles.sortingButtonText}>All</Text>
-  </TouchableOpacity>
-  <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('open')}>
-    <Text style={styles.sortingButtonText}>Open</Text>
-  </TouchableOpacity>
-  <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('ongoing')}>
-    <Text style={styles.sortingButtonText}>Ongoing</Text>
-  </TouchableOpacity>
-  <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('closed')}>
-    <Text style={styles.sortingButtonText}>Closed</Text>
-  </TouchableOpacity>
-</View>
+        <Text style={styles.sortingLabel}>Sort by:</Text>
+        <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('all')}>
+          <Text style={styles.sortingButtonText}>All</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('open')}>
+          <Text style={styles.sortingButtonText}>Open</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('ongoing')}>
+          <Text style={styles.sortingButtonText}>Ongoing</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.sortingButton} onPress={() => sortByStatus('closed')}>
+          <Text style={styles.sortingButtonText}>Closed</Text>
+        </TouchableOpacity>
+      </View>
 
 
       <ScrollView

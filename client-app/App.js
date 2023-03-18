@@ -21,10 +21,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
       <NavigationContainer>
-        <LinearGradient
-          colors={["#4c669f", "#3b5998", "#192f6a"]}
-          style={styles.container}
-        >
+        
           <StatusBar backgroundColor='#fff' barStyle='dark-content' />
           <Navbar
             userName='User Name'
@@ -54,15 +51,12 @@ const App = () => {
             <Stack.Screen name='Settings' component={Settings} />
           </Stack.Navigator>
           <Footer />
-        </LinearGradient>
       </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  
 });
 
 export default App;

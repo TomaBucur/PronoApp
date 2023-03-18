@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import getMockData from '../components/MockDataProvider';
 
-function AddChampionship(props) {
+function ModalChampionship(props) {
   const navigation = useNavigation();
   const [selectedChampionship, setSelectedChampionship] = useState(null);
 
-  const championships = [
-    // { name: 'English Premier League', id: 1, teams: 20, country: 'England', image: require('../assets/epl.png') },
-    { name: 'English Premier League', id: 1, teams: 20, country: 'England', image: require('../../assets/epl.png'), championshipType: "League"},
-    { name: 'La Liga', id: 2, teams: 20, country: 'Spain', image: require('../../assets/laLiga.png'), championshipType: "League"},
-    { name: 'Bundesliga', id: 3, teams: 18, country: 'Germany', image: require('../../assets/bundesliga.png'), championshipType: "League" },
-    { name: 'Serie A', id: 4, teams: 20, country: 'Italy', image: require('../../assets/seriaA.png'), championshipType: "League"},
-    { name: 'Ligue 1', id: 5, teams: 20, country: 'France', image: require('../../assets/ligue1.png'), championshipType: "League"},
-    { name: 'UEFA Champions League', id: 6, teams: 32, country: 'Europe', image: require('../../assets/championsLeague.png'), championshipType: "Cup"},
-    { name: 'UEFA Europa League', id: 7, teams: 48, country: 'Europe', image: require('../../assets/europaLeague.png'), championshipType: "Cup"},
-    { name: 'FIFA World Cup', id: 8, teams: 32, country: 'International', image: require('../../assets/worldCup.png'), championshipType: "Cup"},
-  ];
+  const championships = getMockData().championships;
 
   const handleChampionshipSelect = (championship) => {
     setSelectedChampionship(championship);
@@ -115,4 +106,4 @@ championshipType: {
 }
 });
 
-export default AddChampionship;
+export default ModalChampionship;

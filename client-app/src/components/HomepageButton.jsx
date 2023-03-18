@@ -1,33 +1,33 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const HomepageButton = ({title, onPress}) => {
+const HomepageButton = ({ title, onPress }) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text style={styles.container}>{title}</Text>
+    <TouchableOpacity onPress={onPress} style={styles.button} activeOpacity={0.7}>
+      <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
-  )
-
-}
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#ccccff",
-    borderRadius: 10,
+  button: {
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
+    borderColor: "#fff",
+    borderWidth: 1,
+    borderRadius: 3,
     padding: 15,
     marginHorizontal: 5,
-    width: 180,
-    height: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    color: "black",    
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 2.5,
+    flex: 1,
   },
   text: {
-    
-    
+    justifyContent:"center",
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#fff",
   },
 });
 
