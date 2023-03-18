@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Image,
   View,
@@ -9,18 +9,18 @@ import {
   Button,
   Switch,
   Modal,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import AddChampionship from "./AddChampionship";
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AddChampionship from './AddChampionship';
 
 function CreateTournament() {
   const navigation = useNavigation();
   const [isEditable, setIsEditable] = useState(false);
-  const [tournamentName, setTournamentName] = useState("Tournament Name");
+  const [tournamentName, setTournamentName] = useState('Tournament Name');
   const [isPublic, setIsPublic] = useState(false);
   const [showAddChampionshipModal, setShowAddChampionshipModal] =
     useState(false);
-  const [selectedChampionshipName, setSelectedChampionshipName] = useState("");
+  const [selectedChampionshipName, setSelectedChampionshipName] = useState('');
 
   const handleEditNamePress = () => {
     setIsEditable((oldValue) => !oldValue);
@@ -39,7 +39,7 @@ function CreateTournament() {
 
   const handleSubmit = () => {
     // TODO: Implement submission logic here
-    console.log("Tournament created!");
+    console.log('Tournament created!');
   };
 
   return (
@@ -59,23 +59,23 @@ function CreateTournament() {
           style={styles.tournamentWrapperRight}
           onPress={handleEditNamePress}
         >
-          <Text style={styles.editButton}>{isEditable ? "Save" : "Edit"} </Text>
+          <Text style={styles.editButton}>{isEditable ? 'Save' : 'Edit'} </Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.tournamentNameWrapper}>
         {/* Use selectedChampionshipName or "Add championship" as the button title */}
         <Button
-          title={selectedChampionshipName || "Add championship"}
+          title={selectedChampionshipName || 'Add championship'}
           onPress={handleAddChampionshipPress}
         />
         <Switch
           value={isPublic}
           onValueChange={() => setIsPublic((oldState) => !oldState)}
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isPublic ? "#f5dd4b" : "#f4f3f4"}
+          trackColor={{ false: '#767577', true: '#81b0ff' }}
+          thumbColor={isPublic ? '#f5dd4b' : '#f4f3f4'}
         />
-        <Text style={styles.label}>{isPublic ? "Private" : "Public"}</Text>
+        <Text style={styles.label}>{isPublic ? 'Private' : 'Public'}</Text>
       </View>
 
       <TouchableOpacity style={styles.createButton} onPress={handleSubmit}>
@@ -87,14 +87,14 @@ function CreateTournament() {
           <View style={styles.checkButton}>
             {termsChecked && (
               <Image
-                source={require("../../assets/checked.png")}
+                source={require('../../assets/checked.png')}
                 style={styles.checkIcon}
               />
             )}
           </View>
         </TouchableOpacity>
         <Text style={styles.termsText}>
-          I agree to the{" "}
+          I agree to the{' '}
           <Text style={styles.termsLink}>Terms and Conditions</Text>
         </Text>
       </View>
@@ -123,60 +123,62 @@ function CreateTournament() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     padding: 20,
   },
   tournamentNameWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
   tournamentName: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginRight: 10,
   },
   tournamentNameInput: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginRight: 10,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     padding: 5,
     flex: 1,
+    borderRadius: 5,
+    backgroundColor: '#F2F2F2',
   },
   tournamentWrapperRight: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
   editButton: {
-    color: "#007aff",
+    color: '#007aff',
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   text: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 10,
   },
   label: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginLeft: 10,
   },
   termsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 20,
   },
   checkButton: {
     width: 24,
     height: 24,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     marginRight: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   checkIcon: {
     width: 20,
@@ -186,27 +188,31 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   termsLink: {
-    color: "blue",
-    textDecorationLine: "underline",
-    fontWeight: "bold",
+    color: 'blue',
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
   },
   termsData: {
     marginTop: 20,
     fontSize: 14,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+    paddingTop: 10,
   },
   createButton: {
-    backgroundColor: "#007AFF",
+    backgroundColor: '#007AFF',
     borderRadius: 5,
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginTop: 20,
   },
   createButtonText: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 
 export default CreateTournament;
+
