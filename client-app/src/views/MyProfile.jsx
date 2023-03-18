@@ -1,22 +1,89 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 
 const MyProfile = () => {
   const navigation = useNavigation();
+  const [detailsExpanded, setDetailsExpanded] = useState(false);
+  
   const mockUser = {
     id: 1,
-    name: 'Mihai Viteazul',
-    email: 'mihai.viteazul@example.com',
-    password: 'password123',
-    phone: '123-456-7890',
+    name: "Vlad the Impaler",
+    email: "vlad@example.com",
+    password: "password123",
+    phone: "123-456-7890",
     goodPronostics: 10,
     badPronostics: 5,
-    registrationDate: new Date('2023-01-01'),
-    userRole: 'USER',
+    registrationDate: new Date("2023-01-01"),
+    userRole: "USER",
     tournamentId: 1,
     // Add Tournaments and UserPronosticChampionship when available
   };
+
+  const mockTournaments = [
+    {
+      id: 1,
+      name: "Tournament 1",
+      startingDate: new Date("2023-04-01"),
+      endingDate: new Date("2023-04-15"),
+      tournamentStatus: "OnGoing",
+      championshipName: "La Liga",
+      signedPlayers: 24,
+      championshipId: 1,
+      userId: 1,
+    },
+    {
+      id: 2,
+      name: "Tournament 2",
+      startingDate: new Date("2023-05-01"),
+      endingDate: new Date("2023-05-15"),
+      tournamentStatus: "Open To Registration",
+      championshipName: "Primera Division",
+      signedPlayers: 24,
+      championshipId: 1,
+      userId: 1,
+    },
+    {
+      id: 3,
+      name: "Tournament 3",
+      startingDate: new Date("2023-06-01"),
+      endingDate: new Date("2023-06-15"),
+      tournamentStatus: "Close to Registration",
+      championshipName: "Premier League",
+      signedPlayers: 24,
+      championshipId: 2,
+      userId: 1,
+    },
+    {
+      id: 4,
+      name: "Tournament 4",
+      startingDate: new Date("2023-07-01"),
+      endingDate: new Date("2023-07-15"),
+      tournamentStatus: "Ended",
+      championshipName: "Liga 1 Bergembier",
+      signedPlayers: 35,
+      championshipId: 2,
+      userId: 1,
+    },
+    {
+      id: 5,
+      name: "Tournament 5",
+      startingDate: new Date("2023-08-01"),
+      endingDate: new Date("2023-08-15"),
+      tournamentStatus: "Upcoming",
+      championshipName: "BundesLiga",
+      signedPlayers: 30,
+      championshipId: 3,
+      userId: 1,
+    },
+  ];
 
   const formatDate = (date) => {
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -24,65 +91,77 @@ const MyProfile = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.profileInfo}>
-          <Image
-            source={require('../../assets/profile_photo_placeholder.jpg')}
-            style={styles.profilePhoto}
-          />
+      <View style={styles.pronostics}>
+        <View style={styles.goodPronostics}>
+          <Text style={styles.goodCount}>{mockUser.goodPronostics}</Text>
+        </View>
+        <View>
+          <View style={styles.header}>
+            <Image
+              source={require("../../assets/profile_photo_placeholder.jpg")}
+              style={styles.profilePhoto}
+            />
+            <Image
+              source={require("../../assets/achievement_placeholder.png")}
+              style={styles.achievementPlaceholder}
+            />
+          </View>
           <Text style={styles.name}>{mockUser.name}</Text>
         </View>
-        
-        <View style={styles.achievementInfo}>
-          <Text style={styles.medalTitle}>Achievement Pin</Text>
-          <Image
-            source={require('../../assets/achievement_placeholder.png')}
-            style={styles.achievement}
-          />
+        <View style={styles.badPronostics}>
+          <Text style={styles.badCount}>{mockUser.badPronostics}</Text>
         </View>
       </View>
-
-
       <Text style={styles.detailsTitle}>Details</Text>
       <View style={styles.separator} />
+      <TouchableOpacity onPress={() => setDetailsExpanded(!detailsExpanded)}>
+        {detailsExpanded && (
+          <View style={styles.details}>
+            <Text>Email: {mockUser.email}</Text>
+            <Text>Phone: {mockUser.phone}</Text>
+            <Text>Registration Date: {formatDate(mockUser.registrationDate)}</Text>
+            <Text>User Role: {mockUser.userRole}</Text>
+          </View>
+        )}
+        <Text style={styles.expandCollapseArrow}>{detailsExpanded ? "▲" : "▼"}</Text>
+      </TouchableOpacity>
 
-      <View style={styles.details}>
-        <Text>Email: {mockUser.email}</Text>
-        <Text>Phone: {mockUser.phone}</Text>
-        <Text>
-          Registration Date: {formatDate(mockUser.registrationDate)}
-        </Text>
-        {/* <Text>User Role: {mockUser.userRole}</Text> */}
-        
-      </View>
-
-      <View style={styles.buttons}>
+      <View style={styles.achievements}>
+        <Text style={styles.achievementsTitle}>Achievements</Text>
         <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('UserTournaments')}
+          onPress={() => navigation.navigate("UserAchievements")}
         >
-          <Text style={styles.buttonText}>My Tournaments</Text>
+          <Text style={styles.achievementsCount}>
+            {mockUser.goodPronostics + mockUser.badPronostics}
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('UserAchievements')}
-        >
-          <Text style={styles.buttonText}>Achievements</Text>
-        </TouchableOpacity>        
       </View>
 
-      {/* <View style={styles.pronostics}>
-        <Text style={styles.pronosticsTitle}>Pronostics</Text>
-        <View style={styles.pronosticsCount}>
-          <View style={styles.goodPronostics}>
-            <Text style={styles.goodCount}>{mockUser.goodPronostics}</Text>
-          </View>
-          <View style={styles.badPronostics}>
-            <Text style={styles.badCount}>{mockUser.badPronostics}</Text>
-          </View>
-        </View>
-      </View> */}
+      <Text style={styles.tournamentsTitle}>My Tournaments</Text>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.tournaments}
+      >
+        {mockTournaments.map((tournament) => (
+          <TouchableOpacity
+            key={tournament.id}
+            style={styles.tournament}
+            onPress={() =>
+              navigation.navigate("UserTournament", {
+                tournamentId: tournament.id,
+              })
+            }
+          >
+            <Text style={styles.tournamentName}>{tournament.name}</Text>
+            <Text style={styles.championshipName}>{tournament.championshipName}</Text>
+            <Text style={styles.startingDate}>Starting Date: {tournament.startingDate.toLocaleDateString('en-GB')}</Text>
+            <Text style={styles.endingDate}>Ending Date: {tournament.endingDate.toLocaleDateString('en-GB')}</Text>
+            <Text style={styles.signedPlayers}>Participants: {tournament.signedPlayers}</Text>
 
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -90,101 +169,117 @@ const MyProfile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 20,
   },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
+  achievementPlaceholder: {
+    zIndex: 2,
+    marginRight: 35,
+    width: 30,
+    height: 30,
+    borderRadius: 10,
+    position: "absolute",
+    bottom: 0,
+    right: 0,
   },
-  profileInfo: {
-    alignItems: 'center',
+  expandCollapseArrow: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  header: {
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: 5,
+    position: "relative",
   },
   profilePhoto: {
     width: 100,
     height: 100,
     borderRadius: 50,
+    marginBottom: 10,
   },
   name: {
     fontSize: 24,
-    fontWeight: 'bold',
-    marginTop: 10,
+    fontWeight: "bold",
+    marginBottom: 5,
   },
   pronostics: {
-    alignItems: 'center',
-    marginHorizontal: 10,
-  },
-  pronosticsTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  pronosticsCount: {
-    flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: '#000',
+    marginTop: 0,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
   },
   goodPronostics: {
-    borderRightWidth: 1,
-    borderColor: '#000',
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 10,
+    alignItems: "center",
   },
   badPronostics: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 10,
+    alignItems: "center",
   },
   goodCount: {
-    color: '#008000',
+    color: "#008000",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   badCount: {
-    color: '#ff0000',
+    color: "#ff0000",
     fontSize: 16,
-    fontWeight: 'bold',
-  },
-  achievementInfo: {
-    alignItems: 'center',
-  },
-  medalTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  achievement: {
-    width: 80,
-    height: 80,
-    marginTop: 10,
+    fontWeight: "bold",
   },
   detailsTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    fontWeight: "bold",
+    marginBottom: 5,
   },
   separator: {
-    borderBottomColor: '#000',
+    borderBottomColor: "#000",
     borderBottomWidth: 1,
-    marginBottom: 10,
+    marginBottom: 5,
   },
   details: {
-    flexDirection: 'column',
+    flexDirection: "column",
+    marginBottom: 20,
   },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
+  achievements: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginBottom: 20,
   },
-  button: {
-    backgroundColor: '#007bff',
-    borderRadius: 5,
-    padding: 10,
-  },
-  buttonText: {
-    color: '#fff',
+  achievementsTitle: {
     fontSize: 18,
+    fontWeight: "bold",
+  },
+  achievementsCount: {
+    fontSize: 16,
+    fontWeight: "bold",
+    textDecorationLine: "underline",
+    marginLeft: 5,
+  },
+  tournamentsTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  tournaments: {
+    marginBottom: 20,
+  },
+  tournament: {
+    borderWidth: 1,
+    borderColor: "#000",
+    borderRadius: 4,
+    padding: 10,
+    marginRight: 10,
+  },
+  tournamentName: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 
 export default MyProfile;
-
