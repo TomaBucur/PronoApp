@@ -14,6 +14,8 @@ import UserTournaments from "./src/views/UserTournaments";
 import AboutUs from "./src/views/AboutUs";
 import ContactUs from "./src/views/ContactUs";
 import Settings from "./src/views/Settings";
+import Match from "./src/components/Match";
+import Tournament from "./src/components/Tournament";
 
 
 const Stack = createStackNavigator();
@@ -53,6 +55,11 @@ const App = () => {
             <Stack.Screen name='AboutUs' component={AboutUs} />
             <Stack.Screen name='ContactUs' component={ContactUs} />
             <Stack.Screen name='Settings' component={Settings} />
+
+            {/* For Testing */}
+            <Stack.Screen name='Match' component={Match} />
+            <Stack.Screen name='Tournament' component={Tournament} />
+
           </Stack.Navigator>
           <Footer styles={styles.footer}/>
       </NavigationContainer>

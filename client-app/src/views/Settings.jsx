@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const Settings = () => {
+function Settings() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 

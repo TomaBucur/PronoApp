@@ -1,11 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-function UserTournament() {
+function Tournament() {
+  const navigation = useNavigation();
+
   return (
-    <div>
-      My Tournaments
-    </div>
-  )
+    <View style={styles.container}>
+      <Text style={styles.text}>Tournament</Text>
+    </View>
+  );
 }
 
-export default UserTournament
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+});
+
+export default Tournament;

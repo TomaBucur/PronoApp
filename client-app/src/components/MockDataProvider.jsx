@@ -1,66 +1,75 @@
 // MockDataProvider.js
 
 const getMockData = () => {
+  const company = {
+    name: "Awesome Company",
+    address: "Ferentexas , Bucuresti",
+    phoneNumber: "+1 (555) 123-4567",
+    email: "info@awesomecompany.com",
+    website: "www.awesomecompany.com",
+  };
   const achievements = [
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
-    },{ 
-      image: require("../../assets/epl.png"),
-      isAquiered: true,
-      dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-    { 
+    {
       image: require("../../assets/epl.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
-      importance: 1
-    },{ 
-      image: require("../../assets/epl.png"),
-      isAquiered: true,
-      dateAquiered: new Date("2023-08-01"),
-      importance: 1
+      importance: 1,
     },
-  ]
+    {
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1,
+    },
+    {
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1,
+    },
+  ];
   const users = [
     {
       id: 1,
@@ -303,13 +312,190 @@ const getMockData = () => {
       updatedAt: new Date("2023-03-29"),
     },
   ];
+  const matchData = {
+    id: 1,
+    championshipId: 1,
+    championship: {
+      name: 'Champions League',
+    },
+    hostTeam: 'Team A',
+    guestTeam: 'Team B',
+    hostTeamGoals: 2,
+    guestTeamGoals: 2,
+    winner: null,
+    startingDate: '2023-03-19T15:30:00',
+    matchStatus: 'InProgress',
+    events: [
+      {
+        id: 1,
+        matchId: 1,
+        eventType: 'Goal',
+        player: 'Player 1',
+        team: 'Team A',
+        minute: 15,
+      },
+      {
+        id: 2,
+        matchId: 1,
+        eventType: 'Goal',
+        player: 'Player 2',
+        team: 'Team B',
+        minute: 25,
+      },
+      {
+        id: 3,
+        matchId: 1,
+        eventType: 'YellowCard',
+        player: 'Player 3',
+        team: 'Team A',
+        minute: 40,
+      },
+      {
+        id: 4,
+        matchId: 1,
+        eventType: 'YellowCard',
+        player: 'Player 4',
+        team: 'Team B',
+        minute: 55,
+      },
+      {
+        id: 5,
+        matchId: 1,
+        eventType: 'Substitution',
+        player: 'Player 5',
+        team: 'Team A',
+        minute: 60,
+      },
+      {
+        id: 6,
+        matchId: 1,
+        eventType: 'Substitution',
+        player: 'Player 6',
+        team: 'Team B',
+        minute: 65,
+      },
+      {
+        id: 7,
+        matchId: 1,
+        eventType: 'Goal',
+        player: 'Player 7',
+        team: 'Team A',
+        minute: 70,
+      },
+      {
+        id: 8,
+        matchId: 1,
+        eventType: 'YellowCard',
+        player: 'Player 8',
+        team: 'Team B',
+        minute: 75,
+      },
+      {
+        id: 9,
+        matchId: 1,
+        eventType: 'Substitution',
+        player: 'Player 9',
+        team: 'Team A',
+        minute: 80,
+      },
+      {
+        id: 10,
+        matchId: 1,
+        eventType: 'RedCard',
+        player: 'Player 10',
+        team: 'Team B',
+        minute: 85,
+      },
+      {
+        id: 11,
+        matchId: 1,
+        eventType: 'Goal',
+        player: 'Player 11',
+        team: 'Team A',
+        minute: 88,
+      },
+      {
+        id: 12,
+        matchId: 1,
+        eventType: 'YellowCard',
+        player: 'Player 12',
+        team: 'Team A',
+        minute: 90,
+      },
+      {
+        id: 13,
+        matchId: 1,
+        eventType: 'Goal',
+        player: 'Player 13',
+        team: 'Team B',
+        minute: 92,
+      },
+      {
+        id: 14,
+        matchId: 1,
+        eventType: 'Substitution',
+        player: 'Player 14',
+        team: 'Team A',
+        minute: 94,
+      },
+      {
+        id: 15,
+        matchId: 1,
+        eventType: 'YellowCard',
+        player: 'Player 15',
+        team: 'Team B',
+        minute: 96,
+      },
+      {
+        id: 16,
+        matchId: 1,
+        eventType: 'Goal',
+        player: 'Player 16',
+        team: 'Team B',
+        minute: 100,
+      },
+      {
+        id: 17,
+        matchId: 1,
+        eventType: 'Goal',
+        player: 'Player 17',
+        team: 'Team A',
+        minute: 105,
+      },
+      {
+        id: 18,
+        matchId: 1,
+        eventType: 'RedCard',
+        player: 'Player 18',
+        team: 'Team A',
+        minute: 110,
+      }
+      
+    ],
+  };
+  
+  const pronosticData = {
+    id: 1,
+    matchId: 1,
+    userId: 1,
+    user: {
+      name: 'User A',
+    },
+    hostTeamGoalsPronostic: 2,
+    guestTeamGoalsPronostic: 1,
+    goalsDifferencePronostic: 1,
+  };
+  
   return {
     users,
     tournaments,
     championships,
     matches,
     pronostics,
-    achievements
+    achievements,
+    company,
+    pronosticData,
+    matchData,
   };
 };
 
