@@ -99,6 +99,7 @@ const getMockData = () => {
       signedPlayers: 24,
       championshipId: 1,
       userId: 1,
+      userPosition: "15/30",
     },
     {
       id: 2,
@@ -110,6 +111,7 @@ const getMockData = () => {
       signedPlayers: 24,
       championshipId: 1,
       userId: 1,
+      userPosition: "30/30",
     },
     {
       id: 3,
@@ -121,6 +123,7 @@ const getMockData = () => {
       signedPlayers: 24,
       championshipId: 2,
       userId: 1,
+      userPosition: "10/30",
     },
     {
       id: 4,
@@ -132,6 +135,7 @@ const getMockData = () => {
       signedPlayers: 35,
       championshipId: 2,
       userId: 1,
+      userPosition: "2/30",
     },
     {
       id: 5,
@@ -143,6 +147,31 @@ const getMockData = () => {
       signedPlayers: 30,
       championshipId: 3,
       userId: 1,
+      userPosition: "-/30",
+    },
+    {
+      id: 6,
+      name: "Tournament 6",
+      startingDate: new Date("2023-07-01"),
+      endingDate: new Date("2023-07-15"),
+      tournamentStatus: "Ended",
+      championshipName: "Liga 1 Bergembier",
+      signedPlayers: 35,
+      championshipId: 2,
+      userId: 1,
+      userPosition: "2/30",
+    },
+    {
+      id: 7,
+      name: "Tournament 7",
+      startingDate: new Date("2023-08-01"),
+      endingDate: new Date("2023-08-15"),
+      tournamentStatus: "Upcoming",
+      championshipName: "BundesLiga",
+      signedPlayers: 30,
+      championshipId: 3,
+      userId: 1,
+      userPosition: "-/30",
     },
   ];
 
