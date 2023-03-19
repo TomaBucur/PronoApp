@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-const ProfileHeader = ({ goodPronostics, badPronostics, user }) => {
+const ProfileHeader = ({ user }) => {
   return (
     <View style={styles.pronostics}>
       <View style={styles.goodPronostics}>
-        <Text style={styles.goodCount}>{goodPronostics}</Text>
+        <Text style={styles.goodCount}>{user.goodPronostics}</Text>
       </View>
       <View>
         <View style={styles.header}>
@@ -21,7 +21,7 @@ const ProfileHeader = ({ goodPronostics, badPronostics, user }) => {
         <Text style={styles.name}>{user.name}</Text>
       </View>
       <View style={styles.badPronostics}>
-        <Text style={styles.badCount}>{badPronostics}</Text>
+        <Text style={styles.badCount}>{user.badPronostics}</Text>
       </View>
     </View>
   );

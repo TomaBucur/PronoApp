@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
 
-const ProfileDetails = ({ detailsExpanded, setDetailsExpanded, user }) => {
-  const formatDate = (date) => {
-    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+const ProfileDetails = ({ user }) => {
+  // const formatDate = (date) => {
+  //   return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  // };
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB");
   };
+
+  function formatDateCustom(date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+  const [detailsExpanded, setDetailsExpanded] = useState(false);
 
   return (
     <>
@@ -30,8 +42,10 @@ const ProfileDetails = ({ detailsExpanded, setDetailsExpanded, user }) => {
               <Text>Email: {user.email}</Text>
               <Text>Phone: {user.phone}</Text>
               <Text>
-                Registration Date: {formatDate(user.registrationDate)}
+                Registration Date:{" "}
+                {formatDateCustom(new Date(user.registrationDate))}
               </Text>
+
               <Text>User Role: {user.userRole}</Text>
             </View>
             <TouchableOpacity
