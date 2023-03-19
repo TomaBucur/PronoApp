@@ -46,7 +46,7 @@ function CreateTournament() {
 
   return (
     <LinearGradient
-      colors={["#5BC0F8", "#86E5FF","#FFF3A1", "#FFDE6F",]}
+      colors={["#5BC0F8", "#86E5FF","#FFF3A1", ]}
       style={styles.container}
     >
         <Text style={styles.title}>Create a new Tournament</Text>

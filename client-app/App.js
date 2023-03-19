@@ -4,9 +4,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Navbar from "./src/views/Navbar";
+import Navbar from "./src/components/Navbar";
 import Home from "./src/views/Home";
-import Footer from "./src/views/Footer";
+import Footer from "./src/components/Footer";
 import MyProfile from "./src/views/MyProfile";
 import BrowseTournaments from "./src/views/BrowseTournaments";
 import CreateTournament from "./src/views/CreateTournament";
@@ -60,9 +60,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  footer:{
-    zIndex:3
-  }
+  
 });
 
 export default App;

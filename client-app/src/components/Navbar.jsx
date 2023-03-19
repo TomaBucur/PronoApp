@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import BurgerMenu from "../components/BurgerMenu";
+import BurgerMenu from "./BurgerMenu";
 
 const Navbar = ({
   userName,

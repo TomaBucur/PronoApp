@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 function Tournament({ name, participants, championship, status, userCount }) {
   const statusColors = {
@@ -80,7 +81,10 @@ function BrowseTournaments() {
   };
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#5BC0F8", "#86E5FF","#FFF3A1", "#FFDE6F",]}
+      style={styles.container}
+    >
       <View style={styles.tournamentCodeContainer}>
         <Text style={styles.tournamentCodeLabel}>CODE:</Text>
         <TextInput
@@ -125,7 +129,7 @@ function BrowseTournaments() {
             </TouchableOpacity>
           ))}
       </ScrollView>
-    </View>
+    </LinearGradient>
   );
 }
 
