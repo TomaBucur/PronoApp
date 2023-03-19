@@ -1,13 +1,36 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import getMockData from './MockDataProvider';
+import TournamentMatch from './TournamentMatch';
 
-function Tournament() {
-  const navigation = useNavigation();
+function Tournament({ name, status, isUserParticipant }) {
+  const statusColors = {
+    open: 'green',
+    closed: 'red',
+    ongoing: 'orange',
+  };
+
+  // Mock data for TournamentMatch components
+  const matches = getMockData().matches;
+  const tournamentData = getMockData().tournaments;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Tournament</Text>
+      <Text style={styles.tournamentName}>{name}</Text>
+      <Text style={[styles.tournamentStatus, { color: statusColors[status] }]}>
+        {status}
+      </Text>
+      {status === 'open' && !isUserParticipant && (
+        <TouchableOpacity style={styles.participateButton}>
+          <Text style={styles.participateButtonText}>Participate</Text>
+        </TouchableOpacity>
+      )}
+      <Text style={styles.leaderboard}>Leaderboard</Text>
+      <ScrollView contentContainerStyle={styles.matchesList}>
+        {matches.map((match) => (
+          <TournamentMatch key={match.id} matchData={match} tournamentData={tournamentData} />
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -18,9 +41,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text: {
+  tournamentName: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  tournamentStatus: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  participateButton: {
+    backgroundColor: 'blue',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  participateButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  leaderboard: {
     fontSize: 20,
     fontWeight: 'bold',
+    marginTop: 20,
+  },
+  matchesList: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
   },
 });
 

@@ -29,6 +29,9 @@ function MyProfile () {
       colors={["#0081C9", "#5BC0F8", "#86E5FF", "#FFC93C"]}
       style={styles.container}
     >
+
+      
+      {/* ProfileHeader section */}
       <View style={styles.pronostics}>
         <View style={styles.goodPronostics}>
           <Text style={styles.goodCount}>{mockUser.goodPronostics}</Text>
@@ -50,6 +53,9 @@ function MyProfile () {
           <Text style={styles.badCount}>{mockUser.badPronostics}</Text>
         </View>
       </View>
+
+
+      {/* ProfileDetails Section */}
       <Text style={styles.detailsTitle}>Details</Text>
       <View style={styles.separator} />
       <TouchableOpacity onPress={() => setDetailsExpanded(!detailsExpanded)}>
@@ -57,7 +63,6 @@ function MyProfile () {
           {detailsExpanded ? "▲" : "▼"}
         </Text>
       </TouchableOpacity>
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -86,6 +91,7 @@ function MyProfile () {
         </View>
       </Modal>
 
+      {/* ProfileAchievements section */}
       <View style={styles.achievements}>
         <Text style={styles.achievementsTitle}>Achievements</Text>
         <ScrollView
@@ -102,7 +108,8 @@ function MyProfile () {
           ))}
         </ScrollView>
       </View>
-
+            
+      {/* ProfileTournaments Section */}
       <Text style={styles.tournamentsTitle}>My Tournaments</Text>
       <ScrollView
         horizontal
