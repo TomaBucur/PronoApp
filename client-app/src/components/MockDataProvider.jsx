@@ -1,6 +1,66 @@
 // MockDataProvider.js
 
 const getMockData = () => {
+  const achievements = [
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },{ 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+    { 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },{ 
+      image: require("../../assets/epl.png"),
+      isAquiered: true,
+      dateAquiered: new Date("2023-08-01"),
+      importance: 1
+    },
+  ]
   const users = [
     {
       id: 1,
@@ -220,6 +280,7 @@ const getMockData = () => {
     championships,
     matches,
     pronostics,
+    achievements
   };
 };
 
