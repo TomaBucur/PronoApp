@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import getMockData from '../components/MockDataProvider';
+import { LinearGradient } from 'expo-linear-gradient';
 
 function UserTournaments() {
   const navigation = useNavigation();
@@ -15,7 +16,10 @@ function UserTournaments() {
   };
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#5BC0F8", "#86E5FF", "#FFF3A1", "#FFDE6F"]}
+      style={styles.container}
+    >
       <Text style={styles.text}>My Tournaments</Text>
       <ScrollView style={styles.tournamentList}>
         {tournaments.map((tournament) => (
@@ -62,7 +66,7 @@ function UserTournaments() {
           </View>
         </Modal>
       )}
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -91,6 +95,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
   tournamentName: {
   fontSize: 18,

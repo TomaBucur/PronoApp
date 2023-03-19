@@ -8,7 +8,7 @@ import Navbar from "./src/views/Navbar";
 import Home from "./src/views/Home";
 import Footer from "./src/views/Footer";
 import MyProfile from "./src/views/MyProfile";
-import ParticipateToTournament from "./src/views/ParticipateToTournament";
+import BrowseTournaments from "./src/views/BrowseTournaments";
 import CreateTournament from "./src/views/CreateTournament";
 import UserTournaments from "./src/views/UserTournaments";
 import AboutUs from "./src/views/AboutUs";
@@ -36,27 +36,33 @@ const App = () => {
               component={Home}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name='MyProfile' component={MyProfile} />
+            <Stack.Screen name='MyProfile' component={MyProfile} options={{ headerShown: false }}/>
             <Stack.Screen
-              name='ParticipateToTournament'
-              component={ParticipateToTournament}
+              name='BrowseTournaments'
+              component={BrowseTournaments}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name='CreateTournament'
               component={CreateTournament}
+              options={{ headerShown: false }}
             />
-            <Stack.Screen name='UserTournaments' component={UserTournaments} />
+            <Stack.Screen name='UserTournaments' component={UserTournaments} options={{ headerShown: false }}/>
+
+            {/* Burger Menu Options */}
             <Stack.Screen name='AboutUs' component={AboutUs} />
             <Stack.Screen name='ContactUs' component={ContactUs} />
             <Stack.Screen name='Settings' component={Settings} />
           </Stack.Navigator>
-          <Footer />
+          <Footer styles={styles.footer}/>
       </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  
+  footer:{
+    zIndex:3
+  }
 });
 
 export default App;

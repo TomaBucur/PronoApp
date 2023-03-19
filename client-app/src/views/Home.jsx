@@ -26,8 +26,8 @@ const Home = () => {
         </View>
         <View style={styles.buttonRow}>
           <HomepageButton
-            title="Participate to Tournament"
-            onPress={() => navigation.navigate("ParticipateToTournament")}
+            title="Browse Tournaments"
+            onPress={() => navigation.navigate("BrowseTournaments")}
           />
           <HomepageButton
             title="Create Tournament"
