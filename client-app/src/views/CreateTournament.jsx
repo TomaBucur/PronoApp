@@ -10,6 +10,7 @@ function CreateTournament() {
 
   const handleEditNamePress = () => {
     setIsEditable(oldValue => !oldValue);
+    
   }
 
   return (
