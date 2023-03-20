@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import getMockData from './MockDataProvider';
 import TournamentMatch from './TournamentMatch';
+import { LinearGradient } from 'expo-linear-gradient';
 
 function Tournament({ name, status, isUserParticipant }) {
   const statusColors = {
@@ -15,7 +16,10 @@ function Tournament({ name, status, isUserParticipant }) {
   const tournamentData = getMockData().tournaments;
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#5BC0F8", "#86E5FF", "#FFF3A1", "#FFDE6F", "#69D4B4", "#A1F4D6" ]}
+      style={styles.container}
+    >
       <Text style={styles.tournamentName}>{name}</Text>
       <Text style={[styles.tournamentStatus, { color: statusColors[status] }]}>
         {status}
@@ -31,7 +35,7 @@ function Tournament({ name, status, isUserParticipant }) {
           <TournamentMatch key={match.id} matchData={match} tournamentData={tournamentData} />
         ))}
       </ScrollView>
-    </View>
+    </LinearGradient>
   );
 }
 

@@ -9,19 +9,23 @@ function TournamentMatch({ matchData, pronosticData, tournamentData }) {
   return (
     <View style={styles.container}>
       <View style={styles.teamContainer}>
-        <View style={styles.leftContainer}>
-          <Text style={styles.teamName}>{matchData.hostTeam}</Text>
+        <View style={[styles.leftContainer, { flex: 1 }]}>
+          <Text style={[styles.teamName, { flexWrap: "wrap" }]}>
+            {matchData.hostTeam}
+          </Text>
         </View>
 
-        <View style={styles.scoreSection}>
+        <View style={[styles.scoreSection, { width: 100 }]}>
           <Text style={styles.score}>
             {matchData.hostTeamGoals} - {matchData.guestTeamGoals}
           </Text>
           <Text style={styles.matchMinute}>Minute: 45</Text>
         </View>
 
-        <View style={styles.rightContainer}>
-          <Text style={styles.teamName}>{matchData.guestTeam}</Text>
+        <View style={[styles.rightContainer, { flex: 1 }]}>
+          <Text style={[styles.teamName, { flexWrap: "wrap" }]}>
+            {matchData.guestTeam}
+          </Text>
         </View>
       </View>
     </View>
@@ -30,6 +34,7 @@ function TournamentMatch({ matchData, pronosticData, tournamentData }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "rgba(0,0,0,0.1)",
     alignItems: "center",
     marginBottom: 10,
@@ -51,6 +56,8 @@ const styles = StyleSheet.create({
   teamName: {
     fontSize: 18,
     fontWeight: "bold",
+    flexWrap: "wrap",
+    textAlign: "center",
   },
   scoreSection: {
     alignItems: "center",

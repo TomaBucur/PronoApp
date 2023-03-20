@@ -271,26 +271,174 @@ const getMockData = () => {
     {
       id: 1,
       championshipId: 1,
-      homeTeam: "FC Barcelona",
-      awayTeam: "Real Madrid",
+      hostTeam: "FC Barcelona",
+      guestTeam: "Real Madrid",
       date: new Date("2023-04-01"),
-      homeTeamLogoUrl: "https://example.com/fc_barcelona_logo.png",
-      awayTeamLogoUrl: "https://example.com/real_madrid_logo.png",
+      hostTeamLogoUrl: "https://example.com/fc_barcelona_logo.png",
+      guestTeamLogoUrl: "https://example.com/real_madrid_logo.png",
       stadium: "Camp Nou",
       city: "Barcelona",
     },
     {
       id: 2,
       championshipId: 1,
-      homeTeam: "Atletico Madrid",
-      awayTeam: "Valencia",
+      hostTeam: "Atletico Madrid",
+      guestTeam: "Valencia",
       date: new Date("2023-04-02"),
-      homeTeamLogoUrl: "https://example.com/atletico_madrid_logo.png",
-      awayTeamLogoUrl: "https://example.com/valencia_logo.png",
+      hostTeamLogoUrl: "https://example.com/atletico_madrid_logo.png",
+      guestTeamLogoUrl: "https://example.com/valencia_logo.png",
       stadium: "Wanda Metropolitano",
       city: "Madrid",
     },
+    {
+      id: 3,
+      championshipId: 1,
+      hostTeam: "Sevilla",
+      guestTeam: "Real Sociedad",
+      date: new Date("2023-04-03"),
+      hostTeamLogoUrl: "https://example.com/sevilla_logo.png",
+      guestTeamLogoUrl: "https://example.com/real_sociedad_logo.png",
+      stadium: "Ramon Sanchez-Pizjuan",
+      city: "Sevilla",
+    },
+    {
+      id: 4,
+      championshipId: 1,
+      hostTeam: "Villarreal",
+      guestTeam: "Athletic Club",
+      date: new Date("2023-04-04"),
+      hostTeamLogoUrl: "https://example.com/villarreal_logo.png",
+      guestTeamLogoUrl: "https://example.com/athletic_club_logo.png",
+      stadium: "Estadio de la Ceramica",
+      city: "Villarreal",
+    },
+    {
+      id: 5,
+      championshipId: 1,
+      hostTeam: "Real Betis",
+      guestTeam: "Levante",
+      date: new Date("2023-04-05"),
+      hostTeamLogoUrl: "https://example.com/real_betis_logo.png",
+      guestTeamLogoUrl: "https://example.com/levante_logo.png",
+      stadium: "Benito Villamarin",
+      city: "Sevilla",
+    },
+    {
+      id: 6,
+      championshipId: 1,
+      hostTeam: "Celta Vigo",
+      guestTeam: "Espanyol",
+      date: new Date("2023-04-06"),
+      hostTeamLogoUrl: "https://example.com/celta_vigo_logo.png",
+      guestTeamLogoUrl: "https://example.com/espanyol_logo.png",
+      stadium: "Abanca Balaidos",
+      city: "Vigo",
+    },
+    {
+      id: 7,
+      championshipId: 1,
+      hostTeam: "Getafe",
+      guestTeam: "Osasuna",
+      date: new Date("2023-04-07"),
+      hostTeamLogoUrl: "https://example.com/getafe_logo.png",
+      guestTeamLogoUrl: "https://example.com/osasuna_logo.png",
+      stadium: "Coliseum Alfonso Perez",
+      city: "Getafe",
+    },
+    {
+      id: 8,
+      championshipId: 1,
+      hostTeam: "Granada",
+      guestTeam: "Cadiz",
+      date: new Date("2023-04-08"),
+      hostTeamLogoUrl: "https://example.com/granada_logo.png",
+      guestTeamLogoUrl: "https://example.com/cadiz_logo.png",
+      stadium: "Nuevo Los Carmenes",
+      city: "Granada",
+    },
+    {
+      id: 9,
+      championshipId: 1,
+      hostTeam: "Real Mallorca",
+      guestTeam: "Deportivo Alaves",
+      date: new Date("2023-04-09"),
+      hostTeamLogoUrl: "https://example.com/real_mallorca_logo.png",
+      guestTeamLogoUrl: "https://example.com/deportivo_alaves_logo.png",
+      stadium: "Visit Mallorca Estadi",
+      city: "Palma",
+    },
+    {
+      id: 10,
+      championshipId: 1,
+      hostTeam: "Rayo Vallecano",
+      guestTeam: "Girona",
+      date: new Date("2023-04-10"),
+      hostTeamLogoUrl: "https://example.com/rayo_vallecano_logo.png",
+      guestTeamLogoUrl: "https://example.com/girona_logo.png",
+      stadium: "Estadio de Vallecas",
+      city: "Madrid",
+    },
   ];
+
+  const pronosticData = [
+    {
+      id: 1,
+      matchId: 1,
+      userId: 1,
+      hostTeamGoalsPronostic: 2,
+      guestTeamGoalsPronostic: 1,
+      goalsDifferencePronostic: 1
+    },
+    {
+      id: 2,
+      matchId: 1,
+      userId: 2,
+      hostTeamGoalsPronostic: 3,
+      guestTeamGoalsPronostic: 2,
+      goalsDifferencePronostic: 1
+    },
+    {
+      id: 3,
+      matchId: 1,
+      userId: 3,
+      hostTeamGoalsPronostic: 1,
+      guestTeamGoalsPronostic: 2,
+      goalsDifferencePronostic: -1
+    },
+    {
+      id: 4,
+      matchId: 2,
+      userId: 1,
+      hostTeamGoalsPronostic: 2,
+      guestTeamGoalsPronostic: 0,
+      goalsDifferencePronostic: 2
+    },
+    {
+      id: 5,
+      matchId: 2,
+      userId: 2,
+      hostTeamGoalsPronostic: 1,
+      guestTeamGoalsPronostic: 1,
+      goalsDifferencePronostic: 0
+    },
+    {
+      id: 6,
+      matchId: 2,
+      userId: 3,
+      hostTeamGoalsPronostic: 3,
+      guestTeamGoalsPronostic: 1,
+      goalsDifferencePronostic: 2
+    },
+    {
+      id: 7,
+      matchId: 3,
+      userId: 1,
+      hostTeamGoalsPronostic: 2,
+      guestTeamGoalsPronostic: 1,
+      goalsDifferencePronostic: 1
+    },
+  ];
+
 
   const pronostics = [
     {
@@ -470,22 +618,22 @@ const getMockData = () => {
         team: 'Team A',
         minute: 110,
       }
-      
+
     ],
   };
-  
-  const pronosticData = {
-    id: 1,
-    matchId: 1,
-    userId: 1,
-    user: {
-      name: 'User A',
-    },
-    hostTeamGoalsPronostic: 2,
-    guestTeamGoalsPronostic: 1,
-    goalsDifferencePronostic: 1,
-  };
-  
+
+  // const pronosticData = {
+  //   id: 1,
+  //   matchId: 1,
+  //   userId: 1,
+  //   user: {
+  //     name: 'User A',
+  //   },
+  //   hostTeamGoalsPronostic: 2,
+  //   guestTeamGoalsPronostic: 1,
+  //   goalsDifferencePronostic: 1,
+  // };
+
   return {
     users,
     tournaments,
