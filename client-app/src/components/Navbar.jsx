@@ -1,11 +1,32 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import BurgerMenu from "../components/BurgerMenu";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import BurgerMenu from "./BurgerMenu";
 
-const Navbar = ({ userName, onLogOutPress, onSettingsPress, onAboutUsPress, onContactPress }) => {
+const Navbar = ({
+  userName,
+  onLogOutPress,
+  onSettingsPress,
+  onAboutUsPress,
+  onContactPress,
+}) => {
+
+  const navigation = useNavigation();
+
+  const navigateToHome = () => {
+    navigation.navigate("Home");
+  };
+
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
+        <TouchableOpacity onPress={navigateToHome}>
+          <Image
+            source={require("../../assets/logo_placeholder.png")}
+            style={styles.logo}
+          />
+        </TouchableOpacity>
         <Text style={styles.text}>{userName}</Text>
       </View>
       <View style={styles.rightContainer}>
@@ -22,13 +43,18 @@ const Navbar = ({ userName, onLogOutPress, onSettingsPress, onAboutUsPress, onCo
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    height: 60,
+    backgroundColor: "#1f2937",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     zIndex: 2,
+  },
+  logo: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
   },
   leftContainer: {
     flexDirection: "row",
@@ -37,14 +63,11 @@ const styles = StyleSheet.create({
   text: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 20,
     marginLeft: 10,
-    fontWeight: "bold",
-    
-    
   },
   rightContainer: {
-    position: 'relative',
+    position: "relative",
     width: 50,
     height: 50,
     flexDirection: "row",

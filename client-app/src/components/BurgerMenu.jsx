@@ -1,13 +1,21 @@
-import React, { useState } from "react";
-import { TouchableOpacity, StyleSheet, View, Text, TouchableWithoutFeedback } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Text,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAtom } from "jotai";
 import { navigationState } from "../../state/state";
 
-
-
-const BurgerMenu = ({ onLogOutPress, onSettingsPress, 
-                      onAboutUsPress, onContactPress }) => {
+const BurgerMenu = ({
+  onLogOutPress,
+  onSettingsPress,
+  onAboutUsPress,
+  onContactPress,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useAtom(navigationState.burgerMenu);
 
   const toggleMenu = () => {
@@ -16,9 +24,23 @@ const BurgerMenu = ({ onLogOutPress, onSettingsPress,
 
   const navigation = useNavigation();
 
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("blur", closeMenu);
+
+    return unsubscribe;
+  }, [navigation, isMenuOpen]);
+
   return (
     <View style={styles.container}>
-      
+      <TouchableWithoutFeedback onPress={closeMenu}>
+        <View style={styles.overlay} />
+      </TouchableWithoutFeedback>
       <TouchableOpacity onPress={toggleMenu} style={styles.burgerContainer}>
         <View style={styles.burgerLine} />
         <View style={styles.burgerLine} />
@@ -26,19 +48,28 @@ const BurgerMenu = ({ onLogOutPress, onSettingsPress,
       </TouchableOpacity>
       {isMenuOpen && (
         <View style={styles.menuContainer}>
-          <TouchableOpacity
-            // onPress={onLogOutPress}
-            onPress={() => navigation.navigate('')}
-          >
-            <Text style={styles.menuText}>Log Out</Text>
+          <TouchableOpacity onPress={() => {
+            closeMenu();
+            onLogOutPress();
+          }}>
+            <Text style={[styles.menuText, styles.logoutText]}>Log Out</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+          <TouchableOpacity onPress={() => {
+            closeMenu();
+            navigation.navigate("Settings");
+          }}>
             <Text style={styles.menuText}>Settings</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
+          <TouchableOpacity onPress={() => {
+            closeMenu();
+            navigation.navigate("AboutUs");
+          }}>
             <Text style={styles.menuText}>About Us</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
+          <TouchableOpacity onPress={() => {
+            closeMenu();
+            navigation.navigate("ContactUs");
+          }}>
             <Text style={styles.menuText}>Contact</Text>
           </TouchableOpacity>
         </View>
@@ -52,7 +83,13 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     flexDirection: "row",
     alignItems: "center",
-    zIndex: 2
+    zIndex: 2,
+  },
+  overlay: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "transparent",
   },
   burgerContainer: {
     paddingHorizontal: 10,
@@ -73,12 +110,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 10,
     elevation: 5,
+    borderRadius: 5,
   },
   menuText: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    zIndex: 4
+    zIndex: 4,
+  },
+  logoutText: {
+    color: "red",
   },
 });
 

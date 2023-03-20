@@ -7,7 +7,7 @@ function AboutUs() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>AboutUs</Text>
+      <Text style={styles.text}>About Us</Text>
     </View>
   );
 }
