@@ -26,6 +26,7 @@ function CreateTournament() {
 
   const handleEditNamePress = () => {
     setIsEditable((oldValue) => !oldValue);
+    
   };
 
   const handleAddChampionshipPress = () => {
