@@ -1,9 +1,12 @@
-# Reactivities
+# Prono
 
-It's a social application meant for people who want to gather together and participate in different types of activities, or simply meet people with the same taste in events.
+It's a social pronostics application meant for people who love sports, but mostly football enthusiasts at this moment(we plan to grow to implement this concept on other sports too). You can compete against others football lovers and see who can predict the closest leagues and cups matches between well known teams. By simply join a tournament of your choice and select the scores you feel that are most appropriate for the matches to close with you can be prove to the other players from the tournament and maybe from other cities/countries and who knows, maybe continents that you are the best when it comes to predictions. Beside the main futures of pronostics, you can chat and make new friends inside the application.
+
+For v2.0 you'll be able to use the application daily by creating a private championship with your friends and compete between eachother on a single match on a variety of options like goals/cards/offsides/shots on target/substitutions etc. 
 
 ## Table of Contents
 - [Features](#features)
+- [RoadMap](#roadmap)
 - [About Me](#about-me)
 - [Tech Stack](#tech-stack)
 - [Deployment](#deployment)
@@ -14,17 +17,51 @@ It's a social application meant for people who want to gather together and parti
 
 ## Features
 
+** At this point the application doesn't have any functionality beside front-end(which is in testing phase at this moment) **
+** This section is updated daily from the moment v1.0A starts **
+
+## RoadMap
+
+** Application is still in development, this are the the futures for Alpha phase of application **
+
+** v1.0A **
 - Create account
-- Create/Update/Cancel activities
-- Participate in an existing activity
-- Follow/Unfollow users
-- Add photos for profile
-- Comment on events
+- Login with account
+- Create/Update/Cancel Tournaments
+- Browse Tournaments
+** v2.0A **
+- Participate in an existing Tournament public or private via secret key
+** v2.1A **
+- Set Pronostics for all matches
+** v2.2A **
+- Observe the Leaderboard in Tournament
+- Observe people who participate in a certain Tournament
+** v3.0A **
+- Edit Profile
 - Navigate through users' profiles
-- Observe people who participate in a certain activity
-- Browse through activities
-- Filter activities by date/hosting/going/all activities
-- Observe the followers of a specific user
+** v4.0A **
+- Filter tournaments by championship/Open to registration/On going/Closed to Registration/all activities
+
+** At this point the application is testable and we will commit to version Beta **
+** V1.0B **
+- Follow/Unfollow users
+- Observe the followers/followings of a specific user
+** v1.1B **
+- Add photos for profile
+** v1.2B **
+- Earn badgets/pins as a reward for in application milestone
+** v1.3B **
+- Tournament chat
+- Users chat
+** 1.4B **
+- Push Notifications
+** v1.5B **
+- World Leaderboard
+
+** Here it comes the second part of the application which is meant for daily use **
+
+** V2.0PDB **
+- Starting development of PronoDay Beta 
 
 ## About Me
 
@@ -41,44 +78,44 @@ You can reach me at **bucurtomaadrian@gmail.com** or on [LinkedIn](https://www.l
 
 ## Tech Stack
 
-**Client:** React, TypeScript, Semantic UI, React Router
+**Client:** React-Native, JavaScript, CSS, HTML
 
-**Server:** ASP.NET Core, C#, CQRS, Mediator Pattern, AutoMapper, SignalR
+**Server:** ASP.NET Core, C#, Mediator Pattern, AutoMapper, SignalR
 
-**Database:** MySQL, PostgreSQL, SQLite
+**Database:** MySQL, SSMS, MicrosoftSQL
 
-**Other Technologies:** Git, Docker
+**Other Technologies:** Git, Docker, Trello
 
 ## Deployment
 
-The application is deployed using Docker and [Fly](https://fly.io/) at [joinme.fly.dev](https://joinme.fly.dev).
+We plan to deploy the app using a docker image, for the testing phase on something small like fly.io or Google App Engine and further for deploying to the real world usage we plan to you AWS(Amazon Web Service)
 
 ## Usage
 
-To use this application, visit [joinme.fly.dev](https://joinme.fly.dev) and create an account. From there, you can browse existing activities, create new activities, and participate in activities that you're interested in.
+To use the application you'll have to download it from App Store (for Iphone users) or Google Play Store(for Android users). After you'll have to create a new account, create/sign in to a new tournament, put pronostics and wait to see the winner at the end of the Tournament showed on the Leaderboard.
 
 ## Screenshots
 
-**Welcome/Home Page**
-![Home](https://user-images.githubusercontent.com/102102780/226689209-ded276f1-313b-4037-8848-a1bbb08d04a0.png)
-**Main Page**
-![Main Page](https://user-images.githubusercontent.com/102102780/226689461-1a3be541-61ad-4168-8ce7-c97200fbecc1.png)
-**Hosting Activity Example**
-![Hosting Activity Example](https://user-images.githubusercontent.com/102102780/226689476-131c6e4c-4598-4d6a-9c74-bdd5e7397612.png)
-**Filter using I am going Example**
-![Filter -I am going-Example](https://user-images.githubusercontent.com/102102780/226689488-ee83fda6-4023-4be5-9d35-30f5ed663b36.png)
-**Creating Activity example**
-![Create activity example 1](https://user-images.githubusercontent.com/102102780/226689493-b53af91a-5f3b-45a4-8355-e1cb0a60be66.png)
-![Create activity example 2](https://user-images.githubusercontent.com/102102780/226689500-06c33c05-2ea1-418c-b604-65830578f19d.png)
-![Create activity example 3](https://user-images.githubusercontent.com/102102780/226689517-e5e6ade2-51ab-4d86-b7ad-1ebf4759ed3a.png)
-**Profile Preview**
-![User Profile](https://user-images.githubusercontent.com/102102780/226689534-a71bc0b5-b052-4de5-84d8-341bdb291fa2.png)
-![User Profile Events](https://user-images.githubusercontent.com/102102780/226689558-35670ac3-8918-4b69-8b7c-c607af6dc637.png)
-![User Profile Following](https://user-images.githubusercontent.com/102102780/226689585-63631d19-c3b7-428c-b2e7-39f67b7eff85.png)
-**Activity Example**
-![Activity example](https://user-images.githubusercontent.com/102102780/226689601-860cf62d-4de1-47ad-b704-741bd3569b5d.png)
-**Cancelled Activity Example** 
-![Cancelled Activity Example](https://user-images.githubusercontent.com/102102780/226689612-717ae6f9-3317-43b1-ae89-2c76eeb0714b.png)
+** Home Page **
+![Home Page](https://user-images.githubusercontent.com/102102780/226742832-2c828264-137a-4594-9188-710d2a23337e.jpg)
+
+** User Tournament **
+![User Tournaments Page](https://user-images.githubusercontent.com/102102780/226742911-b75142b1-ce51-4174-91c7-ff1db3dd9178.jpg)
+
+** Browse Tournament **
+![Browse Tournaments Page](https://user-images.githubusercontent.com/102102780/226742968-9ded4341-29cf-413a-bb83-b79f6e5b70b7.jpg)
+
+** User Profile **
+![User Profile](https://user-images.githubusercontent.com/102102780/226743078-38f8745e-65c8-4a0c-a818-b0da6896b035.jpg)
+
+** User Profile Details **
+![User Profile Details](https://user-images.githubusercontent.com/102102780/226743126-b14a2111-d3e2-4565-b4ff-1dbb51cdeb38.jpg)
+
+** Match Component **
+![Match Component](https://user-images.githubusercontent.com/102102780/226743200-49460ff7-ea91-4edc-b8ab-2c5350a9f15c.jpg)
+
+** Create Tournament **
+![Create tournament Page](https://user-images.githubusercontent.com/102102780/226743256-fb6191a3-072e-4aee-b9d3-ae8ad749f056.jpg)
 
 
 ## Feedback
