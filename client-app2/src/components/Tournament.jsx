@@ -1,20 +1,14 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import getMockData from "./MockDataProvider";
-import TournamentMatch from "./TournamentMatch";
-import { LinearGradient } from "expo-linear-gradient";
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import getMockData from './MockDataProvider';
+import TournamentMatch from './TournamentMatch';
+import { LinearGradient } from 'expo-linear-gradient';
 
 function Tournament({ name, status, isUserParticipant }) {
   const statusColors = {
-    open: "green",
-    closed: "red",
-    ongoing: "orange",
+    open: 'green',
+    closed: 'red',
+    ongoing: 'orange',
   };
 
   // Mock data for TournamentMatch components
@@ -23,35 +17,22 @@ function Tournament({ name, status, isUserParticipant }) {
 
   return (
     <LinearGradient
-      colors={[
-        "#5BC0F8",
-        "#86E5FF",
-        "#FFF3A1",
-        "#FFDE6F",
-        "#69D4B4",
-        "#A1F4D6",
-      ]}
+      colors={["#5BC0F8", "#86E5FF", "#FFF3A1", "#FFDE6F", "#69D4B4", "#A1F4D6" ]}
       style={styles.container}
     >
       <Text style={styles.tournamentName}>{name}</Text>
       <Text style={[styles.tournamentStatus, { color: statusColors[status] }]}>
         {status}
       </Text>
-      {status === "open" && !isUserParticipant && (
+      {status === 'open' && !isUserParticipant && (
         <TouchableOpacity style={styles.participateButton}>
           <Text style={styles.participateButtonText}>Participate</Text>
         </TouchableOpacity>
       )}
       <Text style={styles.leaderboard}>Leaderboard</Text>
-      <ScrollView
-        contentContainerStyle={[styles.matchesList, { paddingBottom: 20 }]}
-      >
+      <ScrollView contentContainerStyle={styles.matchesList}>
         {matches.map((match) => (
-          <TournamentMatch
-            key={match.id}
-            matchData={match}
-            tournamentData={tournamentData}
-          />
+          <TournamentMatch key={match.id} matchData={match} tournamentData={tournamentData} />
         ))}
       </ScrollView>
     </LinearGradient>
@@ -61,21 +42,21 @@ function Tournament({ name, status, isUserParticipant }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   tournamentName: {
     fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   tournamentStatus: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 10,
   },
   participateButton: {
-    backgroundColor: "blue",
+    backgroundColor: 'blue',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
@@ -83,12 +64,12 @@ const styles = StyleSheet.create({
   },
   participateButtonText: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#fff",
+    fontWeight: 'bold',
+    color: '#fff',
   },
   leaderboard: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 20,
   },
   matchesList: {

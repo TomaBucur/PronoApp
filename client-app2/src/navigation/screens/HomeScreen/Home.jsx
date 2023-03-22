@@ -16,8 +16,8 @@ const Home = () => {
       <View style={styles.buttonGroup}>
         <View style={styles.buttonRow}>
           <HomepageButton
-            title="My Profile"
-            onPress={() => navigation.navigate("MyProfile")}
+            title="Profile"
+            onPress={() => navigation.navigate("Profile")}
           />
           <HomepageButton
             title="My Tournaments"
