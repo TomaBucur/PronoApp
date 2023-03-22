@@ -10,7 +10,7 @@ const getMockData = () => {
   };
   const achievements = [
     {
-      image: require("../../assets/epl.png"),
+      image: require("../../assets/laLiga.png"),
       isAquiered: true,
       dateAquiered: new Date("2023-08-01"),
       importance: 1,
@@ -109,6 +109,9 @@ const getMockData = () => {
       championshipId: 1,
       userId: 1,
       userPosition: "15/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'open'
     },
     {
       id: 2,
@@ -121,6 +124,9 @@ const getMockData = () => {
       championshipId: 1,
       userId: 1,
       userPosition: "30/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'closed'
     },
     {
       id: 3,
@@ -133,6 +139,9 @@ const getMockData = () => {
       championshipId: 2,
       userId: 1,
       userPosition: "10/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'open'
     },
     {
       id: 4,
@@ -145,6 +154,9 @@ const getMockData = () => {
       championshipId: 2,
       userId: 1,
       userPosition: "2/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'closed'
     },
     {
       id: 5,
@@ -157,6 +169,9 @@ const getMockData = () => {
       championshipId: 3,
       userId: 1,
       userPosition: "-/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'ongoing'
     },
     {
       id: 6,
@@ -169,6 +184,9 @@ const getMockData = () => {
       championshipId: 2,
       userId: 1,
       userPosition: "2/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'open'
     },
     {
       id: 7,
@@ -181,6 +199,54 @@ const getMockData = () => {
       championshipId: 3,
       userId: 1,
       userPosition: "-/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'closed'
+    },
+    {
+      id: 8,
+      name: "Tournament 8",
+      startingDate: new Date("2023-08-01"),
+      endingDate: new Date("2023-08-15"),
+      tournamentStatus: "Upcoming",
+      championshipName: "BundesLiga",
+      signedPlayers: 30,
+      championshipId: 3,
+      userId: 1,
+      userPosition: "-/30",
+      totalPositions: 30,
+      usersSignedInTournament: 30,
+      status: 'closed'
+    },
+    {
+      id: 9,
+      name: "Tournament 9",
+      startingDate: new Date("2023-08-01"),
+      endingDate: new Date("2023-08-15"),
+      tournamentStatus: "Upcoming",
+      championshipName: "BundesLiga",
+      signedPlayers: 30,
+      championshipId: 3,
+      userId: 1,
+      userPosition: "-/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'closed'
+    },
+    {
+      id: 10,
+      name: "Tournament 10",
+      startingDate: new Date("2023-08-01"),
+      endingDate: new Date("2023-08-15"),
+      tournamentStatus: "Upcoming",
+      championshipName: "BundesLiga",
+      signedPlayers: 30,
+      championshipId: 3,
+      userId: 1,
+      userPosition: "-/30",
+      totalPositions: 30,
+      usersSignedInTournament: 15,
+      status: 'closed'
     },
   ];
 
