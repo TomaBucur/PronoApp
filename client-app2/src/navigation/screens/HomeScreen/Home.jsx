@@ -3,10 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 import HomepageButton from "../../../components/HomepageButton";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import getMockData from "../../../components/MockDataProvider";
 
 const Home = () => {
   const navigation = useNavigation();
-
   return (
     <LinearGradient
       colors={["#4c669f", "#3b5998", "#192f6a"]}
@@ -46,6 +46,14 @@ const Home = () => {
             title="Tournament component"
             onPress={() => navigation.navigate("Tournament")}
           />
+          {/* <HomepageButton
+            title="Tournament component"
+            onPress={() =>
+              navigation.navigate("Tournament", {
+                tournamentData: mockDataTournament,
+              })
+            }
+          /> */}
         </View>
       </View>
     </LinearGradient>

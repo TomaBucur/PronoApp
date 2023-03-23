@@ -1,83 +1,102 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-function TournamentMatch({ matchData, pronosticData, tournamentData }) {
-  const isTournamentActive =
-    tournamentData.tournamentStatus !== "ongoing" &&
-    tournamentData.tournamentStatus !== "ended";
+function TournamentMatch({ match, tournamentData }) {
+  const { team1, team2, score1, score2, winner, loser, date } = match;
+  const { pronosticData } = tournamentData;
 
   return (
     <View style={styles.container}>
-      <View style={styles.teamContainer}>
-        <View style={[styles.leftContainer, { flex: 1 }]}>
-          <Text style={[styles.teamName, { flexWrap: "wrap" }]}>
-            {matchData.hostTeam}
-          </Text>
-        </View>
-
-        <View style={[styles.scoreSection, { width: 100 }]}>
-          <Text style={styles.score}>
-            {matchData.hostTeamGoals} - {matchData.guestTeamGoals}
-          </Text>
-          <Text style={styles.matchMinute}>Minute: 45</Text>
-        </View>
-
-        <View style={[styles.rightContainer, { flex: 1 }]}>
-          <Text style={[styles.teamName, { flexWrap: "wrap" }]}>
-            {matchData.guestTeam}
-          </Text>
-        </View>
+      <View style={styles.teamsContainer}>
+        <Text style={styles.teamName}>{team1}</Text>
+        <Text style={styles.score}>{score1}</Text>
       </View>
+      <View style={styles.versusContainer}>
+        <Text style={styles.versusText}>VS</Text>
+        <Text style={styles.dateText}>{date.toLocaleDateString()}</Text>
+      </View>
+      <View style={styles.teamsContainer}>
+        <Text style={styles.teamName}>{team2}</Text>
+        <Text style={styles.score}>{score2}</Text>
+      </View>
+      {winner && loser && (
+        <View style={styles.resultContainer}>
+          <Text style={styles.winnerText}>{winner} wins</Text>
+          <Text style={styles.loserText}>{loser} loses</Text>
+        </View>
+      )}
+      {pronosticData && (
+        <View style={styles.pronosticContainer}>
+          <Text style={styles.pronosticText}>Your Pronostic:</Text>
+          <Text style={styles.pronosticScore}>{pronosticData[match.id]}</Text>
+        </View>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
-    alignItems: "center",
-    marginBottom: 10,
-    borderRadius: 10,
-    padding: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4,
-  },
-  teamContainer: {
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    borderRadius: 5,
+    paddingHorizontal: 80,
+    paddingVertical: 10,
+    marginHorizontal: 20,
+    marginVertical: 10,
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
+    justifyContent: "space-between",
   },
-  leftContainer: {
-    alignItems: "flex-end",
-    paddingRight: 20,
-    flex: 1,
-  },
-  rightContainer: {
-    alignItems: "flex-start",
-    paddingLeft: 20,
+  teamsContainer: {
+    alignItems: "center",
     flex: 1,
   },
   teamName: {
-    fontSize: 18,
     fontWeight: "bold",
-    textAlign: "center",
-  },
-  scoreSection: {
-    alignItems: "center",
-    justifyContent: "center",
+    fontSize: 16,
+    marginBottom: 5,
   },
   score: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginHorizontal: 10,
+    fontSize: 14,
+    color: "#555",
   },
-  matchMinute: {
-    fontSize: 16,
+  versusContainer: {
+    alignItems: "center",
+    flex: 1,
+  },
+  versusText: {
     fontWeight: "bold",
-    marginTop: 10,
+    fontSize: 18,
+    marginBottom: 5,
+  },
+  dateText: {
+    fontSize: 14,
+    color: "#555",
+  },
+  resultContainer: {
+    alignItems: "center",
+    flex: 1,
+  },
+  winnerText: {
+    fontWeight: "bold",
+    color: "green",
+    marginBottom: 5,
+  },
+  loserText: {
+    color: "red",
+  },
+  pronosticContainer: {
+    alignItems: "center",
+    flex: 1,
+  },
+  pronosticText: {
+    fontWeight: "bold",
+    color: "#555",
+    marginBottom: 5,
+  },
+  pronosticScore: {
+    fontSize: 14,
+    color: "#555",
   },
 });
 

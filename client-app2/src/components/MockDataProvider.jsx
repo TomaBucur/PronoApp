@@ -70,7 +70,8 @@ const getMockData = () => {
       importance: 1,
     },
   ];
-  const users = [
+
+  const users = [ 
     {
       id: 1,
       name: "Vlad the Impaler",
@@ -81,7 +82,7 @@ const getMockData = () => {
       badPronostics: 5,
       registrationDate: new Date("2023-01-01"),
       userRole: "USER",
-      tournamentId: 1,
+      tournaments: [1,3,5,7]
     },
     {
       id: 2,
@@ -93,8 +94,104 @@ const getMockData = () => {
       badPronostics: 8,
       registrationDate: new Date("2023-02-01"),
       userRole: "USER",
-      tournamentId: 2,
+      tournaments: [2,3,4,7]
     },
+    {
+      id: 3,
+      name: "Aisha Ahmed",
+      email: "aisha@example.com",
+      password: "password789",
+      phone: "+971-50-123-4567",
+      goodPronostics: 12,
+      badPronostics: 6,
+      registrationDate: new Date("2023-03-01"),
+      userRole: "USER",
+      tournaments: [1,3,4,7]
+    },
+    {
+      id: 4,
+      name: "Joaquin Gonzalez",
+      email: "joaquin@example.com",
+      password: "password123",
+      phone: "+52-33-456-7890",
+      goodPronostics: 8,
+      badPronostics: 10,
+      registrationDate: new Date("2023-02-15"),
+      userRole: "USER",
+      tournaments: [2,3,5,7]
+    },
+    {
+      id: 5,
+      name: "Maria Rodriguez",
+      email: "maria@example.com",
+      password: "password456",
+      phone: "+34-654-321-098",
+      goodPronostics: 18,
+      badPronostics: 2,
+      registrationDate: new Date("2023-01-20"),
+      userRole: "USER",
+      tournaments: [1,3,6,7]
+    },
+    {
+      id: 6,
+      name: "Satoshi Nakamoto",
+      email: "satoshi@example.com",
+      password: "password789",
+      phone: "+81-90-1234-5678",
+      goodPronostics: 22,
+      badPronostics: 3,
+      registrationDate: new Date("2023-03-10"),
+      userRole: "USER",
+      tournaments: [2,3,5,7]
+    },{
+      id: 7,
+      name: "Chen Wei",
+      email: "chen@example.com",
+      password: "password123",
+      phone: "+86-138-1234-5678",
+      goodPronostics: 9,
+      badPronostics: 7,
+      registrationDate: new Date("2023-03-20"),
+      userRole: "USER",
+      tournaments: [2,3,6,7]
+    },
+    {
+      id: 8,
+      name: "Elena Petrova",
+      email: "elena@example.com",
+      password: "password456",
+      phone: "+7-495-123-4567",
+      goodPronostics: 14,
+      badPronostics: 6,
+      registrationDate: new Date("2023-02-05"),
+      userRole: "USER",
+      tournaments: [1,3,5,6,7]
+    },
+    {
+      id: 9,
+      name: "Samantha Lee",
+      email: "samantha@example.com",
+      password: "password789",
+      phone: "+65-9876-5432",
+      goodPronostics: 11,
+      badPronostics: 9,
+      registrationDate: new Date("2023-03-15"),
+      userRole: "USER",
+      tournaments: [1,3,5,7,8]
+    },
+    {
+      id: 10,
+      name: "Gustav Bjorn",
+      email: "gustav@example.com",
+      password: "password123",
+      phone: "+46-70-123-4567",
+      goodPronostics: 7,
+      badPronostics: 11,
+      registrationDate: new Date("2023-02-20"),
+      userRole: "USER",
+      tournaments: [2,3]
+    }
+    
   ];
 
   const tournaments = [
@@ -111,7 +208,119 @@ const getMockData = () => {
       userPosition: "15/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'open'
+      status: 'open',
+      matches: [
+        {
+          id: 1,
+          championshipId: 1,
+          hostTeam: "FC Barcelona",
+          guestTeam: "Real Madrid",
+          date: new Date("2023-04-01"),
+          hostTeamLogoUrl: "https://example.com/fc_barcelona_logo.png",
+          guestTeamLogoUrl: "https://example.com/real_madrid_logo.png",
+          stadium: "Camp Nou",
+          city: "Barcelona",
+        },
+        {
+          id: 2,
+          championshipId: 1,
+          hostTeam: "Atletico Madrid",
+          guestTeam: "Valencia",
+          date: new Date("2023-04-02"),
+          hostTeamLogoUrl: "https://example.com/atletico_madrid_logo.png",
+          guestTeamLogoUrl: "https://example.com/valencia_logo.png",
+          stadium: "Wanda Metropolitano",
+          city: "Madrid",
+        },
+        {
+          id: 3,
+          championshipId: 1,
+          hostTeam: "Sevilla",
+          guestTeam: "Real Sociedad",
+          date: new Date("2023-04-03"),
+          hostTeamLogoUrl: "https://example.com/sevilla_logo.png",
+          guestTeamLogoUrl: "https://example.com/real_sociedad_logo.png",
+          stadium: "Ramon Sanchez-Pizjuan",
+          city: "Sevilla",
+        },
+        {
+          id: 4,
+          championshipId: 1,
+          hostTeam: "Villarreal",
+          guestTeam: "Athletic Club",
+          date: new Date("2023-04-04"),
+          hostTeamLogoUrl: "https://example.com/villarreal_logo.png",
+          guestTeamLogoUrl: "https://example.com/athletic_club_logo.png",
+          stadium: "Estadio de la Ceramica",
+          city: "Villarreal",
+        },
+        {
+          id: 5,
+          championshipId: 1,
+          hostTeam: "Real Betis",
+          guestTeam: "Levante",
+          date: new Date("2023-04-05"),
+          hostTeamLogoUrl: "https://example.com/real_betis_logo.png",
+          guestTeamLogoUrl: "https://example.com/levante_logo.png",
+          stadium: "Benito Villamarin",
+          city: "Sevilla",
+        },
+        {
+          id: 6,
+          championshipId: 1,
+          hostTeam: "Celta Vigo",
+          guestTeam: "Espanyol",
+          date: new Date("2023-04-06"),
+          hostTeamLogoUrl: "https://example.com/celta_vigo_logo.png",
+          guestTeamLogoUrl: "https://example.com/espanyol_logo.png",
+          stadium: "Abanca Balaidos",
+          city: "Vigo",
+        },
+        {
+          id: 7,
+          championshipId: 1,
+          hostTeam: "Getafe",
+          guestTeam: "Osasuna",
+          date: new Date("2023-04-07"),
+          hostTeamLogoUrl: "https://example.com/getafe_logo.png",
+          guestTeamLogoUrl: "https://example.com/osasuna_logo.png",
+          stadium: "Coliseum Alfonso Perez",
+          city: "Getafe",
+        },
+        {
+          id: 8,
+          championshipId: 1,
+          hostTeam: "Granada",
+          guestTeam: "Cadiz",
+          date: new Date("2023-04-08"),
+          hostTeamLogoUrl: "https://example.com/granada_logo.png",
+          guestTeamLogoUrl: "https://example.com/cadiz_logo.png",
+          stadium: "Nuevo Los Carmenes",
+          city: "Granada",
+        },
+        {
+          id: 9,
+          championshipId: 1,
+          hostTeam: "Real Mallorca",
+          guestTeam: "Deportivo Alaves",
+          date: new Date("2023-04-09"),
+          hostTeamLogoUrl: "https://example.com/real_mallorca_logo.png",
+          guestTeamLogoUrl: "https://example.com/deportivo_alaves_logo.png",
+          stadium: "Visit Mallorca Estadi",
+          city: "Palma",
+        },
+        {
+          id: 10,
+          championshipId: 1,
+          hostTeam: "Rayo Vallecano",
+          guestTeam: "Girona",
+          date: new Date("2023-04-10"),
+          hostTeamLogoUrl: "https://example.com/rayo_vallecano_logo.png",
+          guestTeamLogoUrl: "https://example.com/girona_logo.png",
+          stadium: "Estadio de Vallecas",
+          city: "Madrid",
+        },
+      ]
     },
     {
       id: 2,
@@ -126,7 +335,8 @@ const getMockData = () => {
       userPosition: "30/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'closed'
+      status: 'closed',
+      matches: matches
     },
     {
       id: 3,
@@ -141,7 +351,8 @@ const getMockData = () => {
       userPosition: "10/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'open'
+      status: 'open',
+      matches: matches
     },
     {
       id: 4,
@@ -156,7 +367,8 @@ const getMockData = () => {
       userPosition: "2/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'closed'
+      status: 'closed',
+      matches: matches
     },
     {
       id: 5,
@@ -171,7 +383,8 @@ const getMockData = () => {
       userPosition: "-/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'ongoing'
+      status: 'ongoing',
+      matches: matches
     },
     {
       id: 6,
@@ -186,7 +399,8 @@ const getMockData = () => {
       userPosition: "2/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'open'
+      status: 'open',
+      matches: matches
     },
     {
       id: 7,
@@ -201,7 +415,8 @@ const getMockData = () => {
       userPosition: "-/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'closed'
+      status: 'closed',
+      matches: matches
     },
     {
       id: 8,
@@ -216,7 +431,8 @@ const getMockData = () => {
       userPosition: "-/30",
       totalPositions: 30,
       usersSignedInTournament: 30,
-      status: 'closed'
+      status: 'closed',
+      matches: matches
     },
     {
       id: 9,
@@ -231,7 +447,8 @@ const getMockData = () => {
       userPosition: "-/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'closed'
+      status: 'closed',
+      matches: matches
     },
     {
       id: 10,
@@ -246,7 +463,8 @@ const getMockData = () => {
       userPosition: "-/30",
       totalPositions: 30,
       usersSignedInTournament: 15,
-      status: 'closed'
+      status: 'closed',
+      matches: matches
     },
   ];
 
@@ -505,7 +723,6 @@ const getMockData = () => {
     },
   ];
 
-
   const pronostics = [
     {
       id: 1,
@@ -526,179 +743,8 @@ const getMockData = () => {
       updatedAt: new Date("2023-03-29"),
     },
   ];
-  const matchData = {
-    id: 1,
-    championshipId: 1,
-    championship: {
-      name: 'Champions League',
-    },
-    hostTeam: 'Team A',
-    guestTeam: 'Team B',
-    hostTeamGoals: 2,
-    guestTeamGoals: 2,
-    winner: null,
-    startingDate: '2023-03-19T15:30:00',
-    matchStatus: 'InProgress',
-    events: [
-      {
-        id: 1,
-        matchId: 1,
-        eventType: 'Goal',
-        player: 'Player 1',
-        team: 'Team A',
-        minute: 15,
-      },
-      {
-        id: 2,
-        matchId: 1,
-        eventType: 'Goal',
-        player: 'Player 2',
-        team: 'Team B',
-        minute: 25,
-      },
-      {
-        id: 3,
-        matchId: 1,
-        eventType: 'YellowCard',
-        player: 'Player 3',
-        team: 'Team A',
-        minute: 40,
-      },
-      {
-        id: 4,
-        matchId: 1,
-        eventType: 'YellowCard',
-        player: 'Player 4',
-        team: 'Team B',
-        minute: 55,
-      },
-      {
-        id: 5,
-        matchId: 1,
-        eventType: 'Substitution',
-        player: 'Player 5',
-        team: 'Team A',
-        minute: 60,
-      },
-      {
-        id: 6,
-        matchId: 1,
-        eventType: 'Substitution',
-        player: 'Player 6',
-        team: 'Team B',
-        minute: 65,
-      },
-      {
-        id: 7,
-        matchId: 1,
-        eventType: 'Goal',
-        player: 'Player 7',
-        team: 'Team A',
-        minute: 70,
-      },
-      {
-        id: 8,
-        matchId: 1,
-        eventType: 'YellowCard',
-        player: 'Player 8',
-        team: 'Team B',
-        minute: 75,
-      },
-      {
-        id: 9,
-        matchId: 1,
-        eventType: 'Substitution',
-        player: 'Player 9',
-        team: 'Team A',
-        minute: 80,
-      },
-      {
-        id: 10,
-        matchId: 1,
-        eventType: 'RedCard',
-        player: 'Player 10',
-        team: 'Team B',
-        minute: 85,
-      },
-      {
-        id: 11,
-        matchId: 1,
-        eventType: 'Goal',
-        player: 'Player 11',
-        team: 'Team A',
-        minute: 88,
-      },
-      {
-        id: 12,
-        matchId: 1,
-        eventType: 'YellowCard',
-        player: 'Player 12',
-        team: 'Team A',
-        minute: 90,
-      },
-      {
-        id: 13,
-        matchId: 1,
-        eventType: 'Goal',
-        player: 'Player 13',
-        team: 'Team B',
-        minute: 92,
-      },
-      {
-        id: 14,
-        matchId: 1,
-        eventType: 'Substitution',
-        player: 'Player 14',
-        team: 'Team A',
-        minute: 94,
-      },
-      {
-        id: 15,
-        matchId: 1,
-        eventType: 'YellowCard',
-        player: 'Player 15',
-        team: 'Team B',
-        minute: 96,
-      },
-      {
-        id: 16,
-        matchId: 1,
-        eventType: 'Goal',
-        player: 'Player 16',
-        team: 'Team B',
-        minute: 100,
-      },
-      {
-        id: 17,
-        matchId: 1,
-        eventType: 'Goal',
-        player: 'Player 17',
-        team: 'Team A',
-        minute: 105,
-      },
-      {
-        id: 18,
-        matchId: 1,
-        eventType: 'RedCard',
-        player: 'Player 18',
-        team: 'Team A',
-        minute: 110,
-      }
 
-    ],
-  };
 
-  // const pronosticData = {
-  //   id: 1,
-  //   matchId: 1,
-  //   userId: 1,
-  //   user: {
-  //     name: 'User A',
-  //   },
-  //   hostTeamGoalsPronostic: 2,
-  //   guestTeamGoalsPronostic: 1,
-  //   goalsDifferencePronostic: 1,
-  // };
 
   return {
     users,
@@ -709,7 +755,6 @@ const getMockData = () => {
     achievements,
     company,
     pronosticData,
-    matchData,
   };
 };
 
