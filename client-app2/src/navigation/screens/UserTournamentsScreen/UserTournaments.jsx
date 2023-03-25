@@ -21,12 +21,15 @@ function UserTournaments() {
       style={styles.container}
     >
       <Text style={styles.text}>My Tournaments</Text>
-      <ScrollView style={styles.tournamentList}>
+      <ScrollView 
+      style={styles.tournamentList}
+      onPress={() => navigation.navigate("TournamentLeaderboard", { tournamentId: tournament.id })}
+      >
         {tournaments.map((tournament) => (
           <TouchableOpacity
             key={tournament.id}
-            style={styles.tournamentItem}
-            onPress={() => setSelectedTournament(tournament)}
+            style={styles.tournamentItem} 
+            onPress={() => navigation.navigate("Tournament", { tournament })}
           >
             <Text style={styles.tournamentName}>{tournament.name}</Text>
             <Text style={styles.championshipName}>{tournament.championshipName}</Text>

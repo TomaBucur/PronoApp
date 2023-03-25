@@ -20,11 +20,7 @@ const ProfileTournaments = ({ tournaments, navigation }) => {
           <TouchableOpacity
             key={tournament.id}
             style={styles.tournament}
-            onPress={() =>
-              navigation.navigate("UserTournament", {
-                tournamentId: tournament.id,
-              })
-            }
+            onPress={() => navigation.navigate("Tournament", { tournament })}
           >
             <Text style={styles.tournamentName}>{tournament.name}</Text>
             <Text style={styles.championshipName}>
