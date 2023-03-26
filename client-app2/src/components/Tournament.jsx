@@ -69,7 +69,7 @@ function Tournament({ route }) {
                 match={match}
                 tournamentData={tournament}
                 pronosticProps= {null}
-                onPress={() => navigation.navigate("Pronostic", { match, tournamentData })}
+                onPress={() => navigation.navigate("Pronostic", { match, tournament })}
               />
             )
           )
