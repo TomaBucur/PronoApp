@@ -218,8 +218,8 @@ const getMockData = () => {
           hostTeamGoals: 3,
           guestTeamGoals: 3,
           date: new Date("2023-04-01"),
-          hostTeamLogoUrl: "https://example.com/fc_barcelona_logo.png",
-          guestTeamLogoUrl: "https://example.com/real_madrid_logo.png",
+          hostTeamLogoUrl: require("../../assets/images/fc_barcelona_logo.png"),
+          guestTeamLogoUrl: require("../../assets/images/real_madrid_logo.png"),
           stadium: "Camp Nou",
           city: "Barcelona",
         },
@@ -763,8 +763,6 @@ const getMockData = () => {
       updatedAt: new Date("2023-03-29"),
     },
   ];
-
-
 
   return {
     users,

@@ -20,7 +20,7 @@ function BrowseTournaments() {
   const [sortedTournaments, setSortedTournaments] = useState(tournaments);
 
   const handleCodeSubmit = () => {
-    // Handle code submission
+    // Handle code submission, if the code is a valid code from a keyTournament in a tournament
     console.log(`Code submitted: ${tournamentCode}`);
   };
 
@@ -95,8 +95,8 @@ function BrowseTournaments() {
         contentContainerStyle={styles.tournamentsListContainer}
         showsVerticalScrollIndicator={false}
       >
-        {tournaments &&
-          tournaments.map((tournament, index) => (
+        {sortedTournaments &&
+          sortedTournaments.map((tournament, index) => (
             <TouchableOpacity
               key={index}
               onPress={() => navigation.navigate("Tournament", { tournament })}

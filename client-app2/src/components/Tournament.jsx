@@ -5,19 +5,23 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Modal,
 } from "react-native";
 import TournamentMatch from "./TournamentMatch";
+import Pronostic from "./Pronostic";
 import { LinearGradient } from "expo-linear-gradient";
 
 function Tournament({ route }) {
   const { tournament } = route.params;
-  const [showModal, setShowModal] = useState(false);
   const statusColors = {
     open: "green",
     closed: "red",
     ongoing: "orange",
   };
+
+  // Will check if the curent user is in the list of signed users in tournament
+  const isUserSignedInTournament = tournament.isUserParticipant;
+
+  
 
   return (
     <LinearGradient
@@ -40,7 +44,7 @@ function Tournament({ route }) {
       >
         {tournament.status}
       </Text>
-      {tournament.status === "open" && !tournament.isUserParticipant && (
+      {tournament.status === "open" && !isUserSignedInTournament && (
         <TouchableOpacity style={styles.participateButton}>
           <Text style={styles.participateButtonText}>Participate</Text>
         </TouchableOpacity>
@@ -50,13 +54,21 @@ function Tournament({ route }) {
       {/* List of matches from the tournament */}
       <ScrollView contentContainerStyle={styles.matchesList}>
         {tournament.matches ? (
-          tournament.matches.map((match) => (
-            <TournamentMatch
-              key={match.id}
-              match={match}
-              tournamentData={tournament}
-            />
-          ))
+          tournament.matches.map((match) =>
+            isUserSignedInTournament ? (
+              <Pronostic
+                key={match.id}
+                matchProps={match}
+                pronosticProps={pronosticProps}
+              />
+            ) : (
+              <TournamentMatch
+                key={match.id}
+                match={match}
+                tournamentData={tournament}
+              />
+            )
+          )
         ) : (
           <View style={styles.emptyView}>
             <Text style={styles.emptyViewText}>
@@ -88,7 +100,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   participateButton: {
-    backgroundColor: 'rgba(255, 215, 0, 0.7)',
+    backgroundColor: "rgba(255, 215, 0, 0.7)",
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
@@ -107,7 +119,17 @@ const styles = StyleSheet.create({
   matchesList: {
     paddingHorizontal: 10,
     paddingBottom: 20,
-    paddingVertical: 0
+    paddingVertical: 0,
+  },
+  emptyView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyViewText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 

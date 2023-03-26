@@ -36,7 +36,7 @@ function TournamentMatch({ match }) {
   return (
     <View style={styles.container}>
       <View style={styles.teamsContainer}>
-        <Image source={{ uri: hostTeamLogoUrl }} style={styles.logo} />
+        <Image source={ hostTeamLogoUrl } style={styles.logo} />
         <Text style={styles.teamName}>{hostTeam}</Text>
         <Text style={styles.score}>{hostTeamGoals}</Text>
       </View>
@@ -49,7 +49,7 @@ function TournamentMatch({ match }) {
         <Text style={styles.versusText}>VS</Text>
       </View>
       <View style={styles.teamsContainer}>
-        <Image source={{ uri: guestTeamLogoUrl }} style={styles.logo} />
+        <Image source={ guestTeamLogoUrl } style={styles.logo} />
         <Text style={styles.teamName}>{guestTeam}</Text>
         <Text style={styles.score}>{guestTeamGoals}</Text>
       </View>
@@ -92,14 +92,16 @@ const styles = StyleSheet.create({
   teamsContainer: {
     alignItems: "center",
     paddingHorizontal: 5,
+    width: "40%",
   },
   logo: {
+    resizeMode: "contain", //contain or strtch or cover or center
     width: 30,
     height: 30,
     marginBottom: 5,
   },
   teamName: {
-    fontWeight: "bold",
+    fontWeight: "bold", 
     fontSize: 16,
     marginBottom: 5,
   },
