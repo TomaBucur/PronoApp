@@ -53,10 +53,17 @@ function CreateTournament() {
     setShowAddChampionshipModal(true);
   };
 
-  const handleAddChampionshipModalClose = (championshipName, type) => {
+  const handleChampionshipSelect = (championship) => {
+    setSelectedChampionshipName(championship.name);
+    setShowAddChampionshipModal(false); // Close the modal after a championship is selected
+  };
+
+  const handleAddChampionshipModalClose = (championshipName) => {
     setSelectedChampionshipName(championshipName);
-    setTournamentType(type);
     setShowAddChampionshipModal(false);
+    // const handleChampionshipSelect = (championshipName) => {
+    //   setSelectedChampionshipName(championshipName);
+    //   setShowChampionshipsModal(false); // Close the modal after a championship is selected
   };
 
   const [termsChecked, setTermsChecked] = useState(false);
@@ -95,7 +102,11 @@ function CreateTournament() {
         <View style={styles.tournamentNameWrapper}>
           {/* Use selectedChampionshipName or "Add championship" as the button title */}
           <Button
-            title={selectedChampionshipName || "Add championship"}
+            title={
+              selectedChampionshipName
+                ? selectedChampionshipName
+                : "Add championship"
+            }
             onPress={handleAddChampionshipPress}
           />
           <Switch
@@ -104,7 +115,7 @@ function CreateTournament() {
             trackColor={{ false: "#767577", true: "#81b0ff" }}
             thumbColor={isPublic ? "#f5dd4b" : "#f4f3f4"}
           />
-          <Text style={styles.label}>{isPublic ? "Public" :"Private" }</Text>
+          <Text style={styles.label}>{isPublic ? "Public" : "Private"}</Text>
         </View>
         <View style={styles.tournamentNameWrapper}>
           <Text style={styles.label}>Tournament Type: </Text>
@@ -222,7 +233,7 @@ function CreateTournament() {
         {/* Use animationType="slide" to make the modal slide up from the bottom */}
         <Modal
           visible={showAddChampionshipModal}
-          onRequestClose={() => setShowAddChampionshipModal(false)}
+          onPress={() => handleChampionshipSelect(championship)}
           animationType="slide"
           transparent={true}
         >
@@ -232,7 +243,10 @@ function CreateTournament() {
               onPress={() => setShowAddChampionshipModal(false)}
             />
             <View style={styles.modalWrapper}>
-              <AddChampionship onClose={handleAddChampionshipModalClose} />
+              <AddChampionship
+                onClose={handleAddChampionshipModalClose}
+                onChampionshipSelect={handleChampionshipSelect}
+              />
             </View>
           </View>
         </Modal>
@@ -394,11 +408,10 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
   },
   tournamentNameContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  
 });
 
 export default CreateTournament;
