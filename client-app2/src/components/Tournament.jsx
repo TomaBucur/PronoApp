@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import TournamentMatch from "./TournamentMatch";
 import Pronostic from "./Pronostic";
 import { LinearGradient } from "expo-linear-gradient";
@@ -17,7 +18,7 @@ function Tournament({ route }) {
     closed: "red",
     ongoing: "orange",
   };
-
+  const navigation = useNavigation();
   // Will check if the curent user is in the list of signed users in tournament
   const isUserSignedInTournament = tournament.isUserParticipant;
 
@@ -60,12 +61,15 @@ function Tournament({ route }) {
                 key={match.id}
                 matchProps={match}
                 pronosticProps={pronosticProps}
+                onPress={() => navigation.navigate("Pronostic", { matchProps, pronosticProps })}
               />
             ) : (
               <TournamentMatch
                 key={match.id}
                 match={match}
                 tournamentData={tournament}
+                pronosticProps= {null}
+                onPress={() => navigation.navigate("Pronostic", { match, tournamentData })}
               />
             )
           )

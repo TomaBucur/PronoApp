@@ -115,7 +115,7 @@ function CreateTournament() {
             trackColor={{ false: "#767577", true: "#81b0ff" }}
             thumbColor={isPublic ? "#f5dd4b" : "#f4f3f4"}
           />
-          <Text style={styles.label}>{isPublic ? "Public" : "Private"}</Text>
+          <Text style={styles.label}>{isPublic ? "Private" : "Public" }</Text>
         </View>
         <View style={styles.tournamentNameWrapper}>
           <Text style={styles.label}>Tournament Type: </Text>
