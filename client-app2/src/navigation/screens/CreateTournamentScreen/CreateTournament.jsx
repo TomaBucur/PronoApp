@@ -12,7 +12,6 @@ import {
   Pressable,
   Dimensions,
   ScrollView,
-  CheckBox,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AddChampionship from "../../../components/AddChampionship";

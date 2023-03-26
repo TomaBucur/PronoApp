@@ -35,27 +35,6 @@ const Home = () => {
           />
         </View>
       </View>
-      <View style={styles.buttonGroup}>
-        <Text style={styles.mockData}>▼ For Tests ▼</Text>
-        <View style={styles.buttonRow}>
-          <HomepageButton
-            title="Match component"
-            onPress={() => navigation.navigate("Match")}
-          />
-          <HomepageButton
-            title="Tournament component"
-            onPress={() => navigation.navigate("Tournament")}
-          />
-          {/* <HomepageButton
-            title="Tournament component"
-            onPress={() =>
-              navigation.navigate("Tournament", {
-                tournamentData: mockDataTournament,
-              })
-            }
-          /> */}
-        </View>
-      </View>
     </LinearGradient>
   );
 };

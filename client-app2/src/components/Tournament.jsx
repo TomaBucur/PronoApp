@@ -65,36 +65,6 @@ function Tournament({ route }) {
           </View>
         )}
       </ScrollView>
-
-      {/* Modal with more infos about the Tournament */}
-      <TouchableOpacity
-        style={styles.moreInfoButton}
-        onPress={() => setShowModal(true)}
-      >
-        <Text style={styles.moreInfoButtonText}>More Info</Text>
-      </TouchableOpacity>
-      <Modal visible={showModal} animationType="slide">
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Additional Tournament Info:</Text>
-          <Text>Tournament Name: {tournament.name}</Text>
-          <Text>Starting Date: {tournament.startingDate.toDateString()}</Text>
-          <Text>Ending Date: {tournament.endingDate.toDateString()}</Text>
-          <Text>Tournament Status: {tournament.status}</Text>
-          <Text>Championship Name: {tournament.championshipName}</Text>
-          <Text>Signed Players: {tournament.signedPlayers}</Text>
-          <Text>User Position: {tournament.userPosition}</Text>
-          <Text>Total Positions: {tournament.totalPositions}</Text>
-          <Text>
-            Users Signed In Tournament: {tournament.usersSignedInTournament}
-          </Text>
-          <TouchableOpacity
-            style={styles.closeButton}
-            onPress={() => setShowModal(false)}
-          >
-            <Text style={styles.closeButtonText}>Close</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
     </LinearGradient>
   );
 }
@@ -118,7 +88,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   participateButton: {
-    backgroundColor: "blue",
+    backgroundColor: 'rgba(255, 215, 0, 0.7)',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
@@ -137,44 +107,7 @@ const styles = StyleSheet.create({
   matchesList: {
     paddingHorizontal: 10,
     paddingBottom: 20,
-  },
-  moreInfoButton: {
-    backgroundColor: "#69D4B4",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  moreInfoButtonText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#fff",
-  },
-  modalContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
-    paddingHorizontal: 20,
-    paddingVertical: 40,
-  },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  closeButton: {
-    backgroundColor: "red",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  closeButtonText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#fff",
+    paddingVertical: 0
   },
 });
 
