@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import {
   Image,
   View,
@@ -18,9 +19,12 @@ import AddChampionship from "../../../components/AddChampionship";
 import { LinearGradient } from "expo-linear-gradient";
 import { useAtom } from "jotai";
 import { createTournamentState, userState } from "../../../../state/stateManagement";
-import axios from "axios";
 
 function CreateTournament() {
+
+  //USE AXIOSPRIVATE HOOK
+  const axiosPrivate = useAxiosPrivate();
+
   const navigation = useNavigation();
   const [isEditable, setIsEditable] = useState(false);
   const [showAddChampionshipModal, setShowAddChampionshipModal] =
@@ -74,16 +78,20 @@ function CreateTournament() {
   const handleAddChampionshipModalClose = (championshipName) => {
     setSelectedChampionshipName(championshipName);
     setShowAddChampionshipModal(false);
-    // const handleChampionshipSelect = (championshipName) => {
-    //   setSelectedChampionshipName(championshipName);
-    //   setShowChampionshipsModal(false); // Close the modal after a championship is selected
   };
 
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    console.log(axiosPrivate)
+    try {
+      const requset = await axiosPrivate.post("/api/tournament", { test: 1 });
+      console.log(requset);
+      console.log(requset.data);
+    } catch (error) {
+      console.log(error);
+    }
 
-
-    console.log("Tournament created!");
+    // console.log("Tournament created!");
   };
 
   return (

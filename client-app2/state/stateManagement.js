@@ -1,4 +1,5 @@
 import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 
 const burgerMenu = atom(false);
 
@@ -14,6 +15,7 @@ const over18 = atom(false);
 
 /// USER STATE
 const loggedUser = atom({});
+const token = atomWithStorage("token", "");
 
 export const navigationState = {
   burgerMenu,
@@ -32,4 +34,5 @@ export const createTournamentState = {
 
 export const userState = {
   loggedUser,
+  token,
 };
