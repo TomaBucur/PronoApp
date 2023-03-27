@@ -69,7 +69,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Tournament" component={Tournament} />
         <Stack.Screen name="Pronostic" component={Pronostic} />
       </Stack.Navigator>
-      <Footer styles={styles.footer} />
+      <Footer styles={styles.footer} colors={['#0081C9', '#5BC0F8', '#86E5FF', '#FFC93C', '#0081C9']} />
     </NavigationContainer>
   );
 };
