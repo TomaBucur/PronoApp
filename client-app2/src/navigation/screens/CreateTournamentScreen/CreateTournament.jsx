@@ -16,21 +16,33 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import AddChampionship from "../../../components/AddChampionship";
 import { LinearGradient } from "expo-linear-gradient";
+import { useAtom } from "jotai";
+import { createTournamentState, userState } from "../../../../state/stateManagement";
+import axios from "axios";
 
 function CreateTournament() {
   const navigation = useNavigation();
   const [isEditable, setIsEditable] = useState(false);
-  const [tournamentName, setTournamentName] = useState("Tournament Name");
-  const [isPublic, setIsPublic] = useState(false);
   const [showAddChampionshipModal, setShowAddChampionshipModal] =
     useState(false);
   const [selectedChampionshipName, setSelectedChampionshipName] = useState("");
   const [tournamentType, setTournamentType] = useState("League");
-  const [pronosticFrequency, setPronosticFrequency] = useState("");
-  const [isPaid, setIsPaid] = useState(false);
-  const [over18, setOver18] = useState(false);
-  const [tournamentCharge, setTournamentCharge] = useState("");
   const [isPickerVisible, setIsPickerVisible] = useState(false);
+
+
+    //ATOM state
+  const [over18, setOver18] = useAtom(createTournamentState.over18);
+  const [termsChecked, setTermsChecked] = useAtom(createTournamentState.termsChecked);
+  const [pronosticFrequency, setPronosticFrequency] = useAtom(createTournamentState.pronosticFrquency);
+  const [entryPrice, setEntryPrice] = useAtom(createTournamentState.entryPrice);
+  const [isPaid, setIsPaid] = useAtom(createTournamentState.isPaid)
+  const [isPublic, setIsPublic] = useAtom(createTournamentState.isPublic);
+  const [tournamentName, setTournamentName] = useAtom(createTournamentState.tournamentName);
+  const [selectedChampionship, setSelectedChampionship] = useAtom(createTournamentState.selectedChampionship);
+
+  const [loggedUser] = useAtom(userState.loggedUser);
+  
+
 
   const openPicker = () => {
     setIsPickerVisible(true);
@@ -55,6 +67,7 @@ function CreateTournament() {
 
   const handleChampionshipSelect = (championship) => {
     setSelectedChampionshipName(championship.name);
+    setSelectedChampionship(championship);
     setShowAddChampionshipModal(false); // Close the modal after a championship is selected
   };
 
@@ -66,10 +79,10 @@ function CreateTournament() {
     //   setShowChampionshipsModal(false); // Close the modal after a championship is selected
   };
 
-  const [termsChecked, setTermsChecked] = useState(false);
 
   const handleSubmit = () => {
-    // TODO: Implement submission logic here
+
+
     console.log("Tournament created!");
   };
 
@@ -133,7 +146,7 @@ function CreateTournament() {
               style={styles.tournamentChargeInput}
               placeholder="Tournament Charge"
               keyboardType="numeric"
-              onChangeText={(text) => setTournamentCharge(text)}
+              onChangeText={(text) => setEntryPrice(text)}
             />
           </View>
         )}

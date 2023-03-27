@@ -23,7 +23,6 @@ function BrowseTournaments() {
     // Handle code submission, if the code is a valid code from a keyTournament in a tournament
     console.log(`Code submitted: ${tournamentCode}`);
   };
-
   const sortByStatus = (status) => {
     const sorted = [...tournaments] // Create a shallow copy of the tournaments array
       .filter((tournament) => status === "all" || tournament.status === status) // Filter by status if status is not 'all'
