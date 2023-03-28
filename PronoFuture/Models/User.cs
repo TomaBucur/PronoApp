@@ -15,8 +15,11 @@
         public int BadPronostics { get; set; }
         public DateTime RegistrationDate { get; set; }
         public EnumUserRole UserRole { get; set; }
+        
         public int TournamentId { get; set; }
         public virtual ICollection<Tournament> Tournaments { get; set; }
-        public List<PronosticChampionship> UserPronosticChampionship { get; set; }        
+
+        public int MatchPronosticId { get; set; }
+        public ICollection<MatchPronostic> MatchPronostics { get; set; }
     }
 }
