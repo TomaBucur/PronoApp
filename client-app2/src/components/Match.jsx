@@ -14,7 +14,7 @@ function Match(props) {
   console.log(match)
   console.log(tournament)
     // const matchData = getMockData().matchData;
-    const pronosticData = getMockData().pronosticData;
+    const pronosticData = getMockData().pronosticData.find(obj => obj.id = match.id);
     // const tournamentData = getMockData().tournaments[0];
 
   return (

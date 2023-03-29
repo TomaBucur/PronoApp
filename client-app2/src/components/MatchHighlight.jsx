@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 function MatchHighlight({ matchData, pronosticData, tournamentData }) {
+  console.log("AICICIACISACIASCASCa")
+  console.log(pronosticData)
   const isTournamentActive =
     tournamentData.tournamentStatus !== "ongoing" && tournamentData.tournamentStatus !== "ended";
 
@@ -25,7 +27,7 @@ function MatchHighlight({ matchData, pronosticData, tournamentData }) {
                 styles.wrongPronostic
           }
           >
-            {matchData.hostTeamGoals} - {matchData.guestTeamGoals}
+            {pronosticData.hostTeamGoalsPronostic} - {pronosticData.guestTeamGoalsPronostic}
           </Text>
           <Text style={styles.matchMinute}>Minute: 45</Text>
           <TouchableOpacity
@@ -36,8 +38,8 @@ function MatchHighlight({ matchData, pronosticData, tournamentData }) {
             disabled={!isTournamentActive}
           >
             <Text style={styles.pronostic}>
-              {pronosticData.hostTeamGoalsPronostic} -{" "}
-              {pronosticData.guestTeamGoalsPronostic}
+              {matchData.hostTeamGoals} -{" "}
+              {matchData.guestTeamGoals}
             </Text>
           </TouchableOpacity>
         </View>
