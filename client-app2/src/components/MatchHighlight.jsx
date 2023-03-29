@@ -16,7 +16,15 @@ function MatchHighlight({ matchData, pronosticData, tournamentData }) {
         </View>
 
         <View style={styles.scoreSection}>
-          <Text style={styles.score}>
+          <Text style={
+            (pronosticData.hostTeamGoalsPronostic == matchData.hostTeamGoals && pronosticData.guestTeamGoalsPronostic == matchData.guestTeamGoals)
+              ?
+              styles.correctPronostic :
+              (pronosticData.hostTeamGoalsPronostic - pronosticData.guestTeamGoalsPronostic == matchData.hostTeamGoals - matchData.guestTeamGoals) ?
+                styles.correctGoalsDifference :
+                styles.wrongPronostic
+          }
+          >
             {matchData.hostTeamGoals} - {matchData.guestTeamGoals}
           </Text>
           <Text style={styles.matchMinute}>Minute: 45</Text>
@@ -69,7 +77,29 @@ const styles = StyleSheet.create({
   scoreSection: {
     alignItems: "center",
   },
-  score: {
+  correctPronostic: {
+    backgroundColor: 'green',
+    padding: 2,
+    borderRadius: 10,
+    overflow: "hidden",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginHorizontal: 10,
+  },
+  wrongPronostic: {
+    backgroundColor: 'red',
+    padding: 2,
+    borderRadius: 10,
+    overflow: "hidden",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginHorizontal: 10,
+  },
+  correctGoalsDifference: {
+    backgroundColor: 'yellow',
+    padding: 2,
+    borderRadius: 10,
+    overflow: "hidden",
     fontSize: 24,
     fontWeight: "bold",
     marginHorizontal: 10,
