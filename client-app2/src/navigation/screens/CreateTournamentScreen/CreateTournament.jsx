@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Toast from 'react-native-toast-message';
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import {
   Image,
@@ -13,6 +14,7 @@ import {
   Pressable,
   Dimensions,
   ScrollView,
+  ToastAndroid
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AddChampionship from "../../../components/AddChampionship";
@@ -80,9 +82,34 @@ function CreateTournament() {
     setShowAddChampionshipModal(false);
   };
 
+    const showToast = (message) => {
+    Toast.show({
+      type: "error",
+      text1: 'Error',
+      text2: message
+    });
+  };
+
 
   const handleSubmit = async () => {
-    console.log(axiosPrivate)
+    if (!termsChecked) {
+      showToast("Please confirm terms and conditions");
+      return;
+    }
+    console.log(over18)
+     console.log(isPaid)
+    if (isPaid && !over18) {
+      showToast("Please confirm that you are over 18");
+      return;
+    }
+    const body = {
+      hostUserId: loggedUser.id,
+      ChampionshipId: selectedChampionship.id,
+      name: tournamentName,
+      isPublic: isPublic,
+      tournamentPrice: entryPrice,
+      enumTournamentPronosticFrequency: pronosticFrequency,
+    }
     try {
       const requset = await axiosPrivate.post("/api/tournament", { test: 1 });
       console.log(requset);
