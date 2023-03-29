@@ -111,7 +111,7 @@ function CreateTournament() {
       enumTournamentPronosticFrequency: pronosticFrequency,
     }
     try {
-      const requset = await axiosPrivate.post("/api/tournament", { test: 1 });
+      const requset = await axiosPrivate.post("/api/tournament", body);
       console.log(requset);
       console.log(requset.data);
     } catch (error) {
