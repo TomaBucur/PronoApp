@@ -7,9 +7,6 @@
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public int AchievementId { get; set; }
-        public ICollection<Achievements> Achievements { get; set; }
-
         public string Phone { get; set; }
         public int GoodPronostics { get; set; }
         public int BadPronostics { get; set; }
@@ -21,5 +18,8 @@
 
         public int MatchPronosticId { get; set; }
         public ICollection<MatchPronostic> MatchPronostics { get; set; }
+        public int AchievementId { get; set; }
+        public ICollection<Achievement> Achievements { get; set; }
+        public ICollection<Tournament> HostedTournaments { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PronoFuture.Models
 {
@@ -16,17 +17,11 @@ namespace PronoFuture.Models
         public int SignedPlayers { get; set; }
         public float TournamentPrice { get; set; }
         public EnumTournamentPronosticFrequency EnumTournamentPronosticFrequency { get; set; }
-        
-        
-        
-        public int TournamentMasterId { get; set; }
-        public User TournamentMaster { get; set; }
-        
-        
-        
         public int ChampionshipId { get; set; }
         public Championship Championship { get; set; }
         public int UserId { get; set; }
         public virtual ICollection<User> Users { get; set; }
+        public int HostUserId { get; set; }
+        public User HostUser { get; set; }
     }
 }

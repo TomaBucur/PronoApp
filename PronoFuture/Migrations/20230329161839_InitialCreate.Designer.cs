@@ -12,8 +12,8 @@ using PronoFuture.Data;
 namespace PronoFuture.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230308120702_InitialMigration2")]
-    partial class InitialMigration2
+    [Migration("20230329161839_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,25 @@ namespace PronoFuture.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("PronoFuture.Models.Achievement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Achievements");
+                });
 
             modelBuilder.Entity("PronoFuture.Models.Championship", b =>
                 {
@@ -40,7 +59,6 @@ namespace PronoFuture.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartingDate")
@@ -63,14 +81,12 @@ namespace PronoFuture.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("GuestTeam")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GuestTeamGoals")
                         .HasColumnType("int");
 
                     b.Property<string>("HostTeam")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HostTeamGoals")
@@ -83,7 +99,6 @@ namespace PronoFuture.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Winner")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -101,6 +116,9 @@ namespace PronoFuture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ChampionshipId")
+                        .HasColumnType("int");
+
                     b.Property<int>("GoalsDifferencePronostic")
                         .HasColumnType("int");
 
@@ -113,42 +131,18 @@ namespace PronoFuture.Migrations
                     b.Property<int>("MatchId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PronosticChampionshipId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MatchId");
-
-                    b.HasIndex("PronosticChampionshipId");
-
-                    b.ToTable("MatchPronostics");
-                });
-
-            modelBuilder.Entity("PronoFuture.Models.PronosticChampionship", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ChampionshipId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserPoints")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ChampionshipId");
 
+                    b.HasIndex("MatchId");
+
                     b.HasIndex("UserId");
 
-                    b.ToTable("PronosticsChampionships");
+                    b.ToTable("MatchPronostics");
                 });
 
             modelBuilder.Entity("PronoFuture.Models.Tournament", b =>
@@ -159,25 +153,51 @@ namespace PronoFuture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AccessKey")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<int>("ChampionshipId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChampionshipType")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndingDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("EnumTournamentPronosticFrequency")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HostUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SignedPlayers")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartingDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<float>("TournamentPrice")
+                        .HasColumnType("real");
+
                     b.Property<int>("TournamentStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ChampionshipId");
+
+                    b.HasIndex("HostUserId");
 
                     b.ToTable("Tournaments");
                 });
@@ -190,26 +210,28 @@ namespace PronoFuture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AchievementId")
+                        .HasColumnType("int");
+
                     b.Property<int>("BadPronostics")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GoodPronostics")
                         .HasColumnType("int");
 
+                    b.Property<int>("MatchPronosticId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RegistrationDate")
@@ -226,19 +248,34 @@ namespace PronoFuture.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("TournamentUser", b =>
+            modelBuilder.Entity("UserAchievements", b =>
                 {
-                    b.Property<int>("TournamentsId")
+                    b.Property<int>("AchievementId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsersId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("TournamentsId", "UsersId");
+                    b.HasKey("AchievementId", "UserId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("TournamentUser");
+                    b.ToTable("UserAchievements");
+                });
+
+            modelBuilder.Entity("UserTournaments", b =>
+                {
+                    b.Property<int>("TournamentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TournamentId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTournaments");
                 });
 
             modelBuilder.Entity("PronoFuture.Models.Match", b =>
@@ -246,7 +283,7 @@ namespace PronoFuture.Migrations
                     b.HasOne("PronoFuture.Models.Championship", "Championship")
                         .WithMany("Matches")
                         .HasForeignKey("ChampionshipId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Championship");
@@ -254,34 +291,27 @@ namespace PronoFuture.Migrations
 
             modelBuilder.Entity("PronoFuture.Models.MatchPronostic", b =>
                 {
-                    b.HasOne("PronoFuture.Models.Match", "Match")
-                        .WithMany()
-                        .HasForeignKey("MatchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PronoFuture.Models.PronosticChampionship", null)
-                        .WithMany("Pronostics")
-                        .HasForeignKey("PronosticChampionshipId");
-
-                    b.Navigation("Match");
-                });
-
-            modelBuilder.Entity("PronoFuture.Models.PronosticChampionship", b =>
-                {
                     b.HasOne("PronoFuture.Models.Championship", "Championship")
                         .WithMany()
                         .HasForeignKey("ChampionshipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PronoFuture.Models.Match", "Match")
+                        .WithMany()
+                        .HasForeignKey("MatchId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("PronoFuture.Models.User", "User")
-                        .WithMany("UserPronosticChampionship")
+                        .WithMany("MatchPronostics")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Championship");
+
+                    b.Navigation("Match");
 
                     b.Navigation("User");
                 });
@@ -291,24 +321,47 @@ namespace PronoFuture.Migrations
                     b.HasOne("PronoFuture.Models.Championship", "Championship")
                         .WithMany()
                         .HasForeignKey("ChampionshipId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PronoFuture.Models.User", "HostUser")
+                        .WithMany("HostedTournaments")
+                        .HasForeignKey("HostUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Championship");
+
+                    b.Navigation("HostUser");
                 });
 
-            modelBuilder.Entity("TournamentUser", b =>
+            modelBuilder.Entity("UserAchievements", b =>
                 {
-                    b.HasOne("PronoFuture.Models.Tournament", null)
+                    b.HasOne("PronoFuture.Models.Achievement", null)
                         .WithMany()
-                        .HasForeignKey("TournamentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("AchievementId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("PronoFuture.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UserTournaments", b =>
+                {
+                    b.HasOne("PronoFuture.Models.Tournament", null)
+                        .WithMany()
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PronoFuture.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -317,14 +370,11 @@ namespace PronoFuture.Migrations
                     b.Navigation("Matches");
                 });
 
-            modelBuilder.Entity("PronoFuture.Models.PronosticChampionship", b =>
-                {
-                    b.Navigation("Pronostics");
-                });
-
             modelBuilder.Entity("PronoFuture.Models.User", b =>
                 {
-                    b.Navigation("UserPronosticChampionship");
+                    b.Navigation("HostedTournaments");
+
+                    b.Navigation("MatchPronostics");
                 });
 #pragma warning restore 612, 618
         }

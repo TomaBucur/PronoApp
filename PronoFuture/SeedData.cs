@@ -139,21 +139,6 @@ namespace PronoFuture
                             GuestTeamGoalsPronostic = random.Next(0, 6),
                             GoalsDifferencePronostic = Math.Abs(match.HostTeamGoals - match.GuestTeamGoals)
                         };
-
-                        user1.UserPronosticChampionship.Add(new PronosticChampionship
-                        {
-                            UserId = user1.Id,
-                            ChampionshipId = championship.Id,
-                            Pronostics = new List<MatchPronostic> { matchPronostic1 }
-                        });
-
-                        user2.UserPronosticChampionship.Add(new PronosticChampionship
-                        {
-                            UserId = user2.Id,
-                            ChampionshipId = championship.Id,
-                            Pronostics = new List<MatchPronostic> { matchPronostic2 }
-                        });
-
                         championship.Matches.Add(match);
                     }
                 }
