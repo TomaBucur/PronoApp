@@ -8,11 +8,13 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import TournamentMatch from "./TournamentMatch";
-import Pronostic from "./Pronostic";
 import { LinearGradient } from "expo-linear-gradient";
+
+const matchPronostic = {};
 
 function Tournament({ route }) {
   const { tournament } = route.params;
+  const tournamentData = tournament;
   const statusColors = {
     open: "green",
     closed: "red",
@@ -56,22 +58,23 @@ function Tournament({ route }) {
       <ScrollView contentContainerStyle={styles.matchesList}>
         {tournament.matches ? (
           tournament.matches.map((match) =>
-            isUserSignedInTournament ? (
-              <Pronostic
-                key={match.id}
-                matchProps={match}
-                pronosticProps={pronosticProps}
-                onPress={() => navigation.navigate("Pronostic", { matchProps, pronosticProps })}
-              />
-            ) : (
-              <TournamentMatch
+            <TouchableOpacity
+                  onPress={() => {
+                console.log("aici")
+                console.log(tournamentData)
+                tournament1 = tournament
+                  navigation.navigate("Match", { match, tournament })
+                }}>
+                <TournamentMatch
+                isUserSignedInTournament={isUserSignedInTournament}
+                matchPronostic={matchPronostic}
                 key={match.id}
                 match={match}
                 tournamentData={tournament}
-                pronosticProps= {null}
-                onPress={() => navigation.navigate("Pronostic", { match, tournament })}
+                pronosticProps={null}
               />
-            )
+            </TouchableOpacity>
+              
           )
         ) : (
           <View style={styles.emptyView}>

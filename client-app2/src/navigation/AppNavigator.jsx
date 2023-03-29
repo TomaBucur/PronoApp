@@ -16,7 +16,7 @@ import Tournament from "../components/Tournament";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Match from "../components/Match";
-import Pronostic from "../components/Pronostic";
+
 
 const Stack = createStackNavigator();
 
@@ -67,7 +67,6 @@ const AppNavigator = () => {
         {/* Other Components */}
         <Stack.Screen name="Match" component={Match} />
         <Stack.Screen name="Tournament" component={Tournament} />
-        <Stack.Screen name="Pronostic" component={Pronostic} />
       </Stack.Navigator>
       <Footer styles={styles.footer} colors={['#0081C9', '#5BC0F8', '#86E5FF', '#FFC93C', '#0081C9']} />
     </NavigationContainer>

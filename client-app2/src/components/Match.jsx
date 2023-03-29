@@ -4,23 +4,29 @@ import MatchEvents from './MatchEvents';
 import MatchHighlight from './MatchHighlight';
 import getMockData from './MockDataProvider';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRoute } from '@react-navigation/native';
 
-function Match() {
 
-    const matchData = getMockData().matchData;
+function Match(props) {
+  const route = useRoute();
+  const { match, tournament } = route.params;
+  console.log("IN MECI")
+  console.log(match)
+  console.log(tournament)
+    // const matchData = getMockData().matchData;
     const pronosticData = getMockData().pronosticData;
-    const tournamentData = getMockData().tournaments[0];
+    // const tournamentData = getMockData().tournaments[0];
 
   return (
     <LinearGradient
       colors={["#5BC0F8", "#86E5FF", "#FFF3A1", "#FFDE6F", "#69D4B4", "#A1F4D6" ]}
       style={styles.container}
     >
-      <Text style={styles.championshipName}>{matchData.championship.name}</Text>
+      <Text style={styles.championshipName}>{tournament.championshipName}</Text>
       <Text style={styles.tournamentName}>Tournament Name</Text>
-      <MatchHighlight matchData={matchData} pronosticData={pronosticData} tournamentData={tournamentData} />
+      <MatchHighlight matchData={match} pronosticData={pronosticData} tournamentData={tournament} />
       <Text style={styles.matchDetails}>Match Events</Text>
-      <MatchEvents events={matchData.events} />
+      <MatchEvents events={match.events} />
     </LinearGradient>
   );
 }

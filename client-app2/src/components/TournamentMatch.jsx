@@ -21,6 +21,8 @@ function TournamentMatch({ match }) {
     city,
     pronosticHostTeamGoals,
     pronosticGuestTeamGoals,
+    isUserSignedInTournament,
+    matchPronostic,
   } = match;
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -41,11 +43,10 @@ function TournamentMatch({ match }) {
         <Text style={styles.score}>{hostTeamGoals}</Text>
       </View>
       <View style={styles.versusContainer}>
-        <TouchableOpacity onPress={showModal}>
-          <Text style={styles.detailsButton}>
+        {/* <TouchableOpacity onPress={showModal}> */}
+          <Text>
             Details
           </Text>
-        </TouchableOpacity>
         <Text style={styles.versusText}>VS</Text>
       </View>
       <View style={styles.teamsContainer}>

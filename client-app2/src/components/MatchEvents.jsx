@@ -11,7 +11,7 @@ function MatchEvents({ events }) {
         <Text style={styles.headerText}>Event</Text>
         <Text style={styles.headerText}>Minute</Text>
       </View>
-      <ScrollView style={styles.eventsContainer}>
+      {/* <ScrollView style={styles.eventsContainer}>
         {events.map((event) => (
           <View key={event.id} style={styles.event}>
             <Text style={styles.eventText}>
@@ -20,7 +20,7 @@ function MatchEvents({ events }) {
             <Text style={styles.eventText}>{event.minute}</Text>
           </View>
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
