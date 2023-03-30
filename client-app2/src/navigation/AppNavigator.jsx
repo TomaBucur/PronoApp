@@ -16,6 +16,9 @@ import Tournament from "../components/Tournament";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Match from "../components/Match";
+import DrawerNavigator from "./DrawerNavigator";
+// import DrawerNavigator from "./DrawerNavigator";
+
 
 
 const Stack = createStackNavigator();
@@ -32,6 +35,12 @@ const AppNavigator = () => {
         }}
       />
       <Stack.Navigator initialRouteName="Home">
+        {/* <DrawerNavigator /> */}
+        {/* <Stack.Screen
+          name="Drawer"
+          component={DrawerNavigator}
+          options={{ headerShown: false }}
+        /> */}
         <Stack.Screen
           name="Home"
           component={Home}
