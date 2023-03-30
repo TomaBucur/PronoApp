@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import MatchEvents from './MatchEvents';
 import MatchHighlight from './MatchHighlight';
 import getMockData from './MockDataProvider';
@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRoute } from '@react-navigation/native';
 
 
-function Match(props) {
+function Match({navigation}) {
   const route = useRoute();
   const { match, tournament } = route.params;
   console.log("IN MECI")
@@ -24,6 +24,7 @@ function Match(props) {
     >
       <Text style={styles.championshipName}>{tournament.championshipName}</Text>
       <Text style={styles.tournamentName}>Tournament Name</Text>
+      <Button title="Go Back" onPress={() => navigation.navigate("Tournament", { tournament })} />
       <MatchHighlight matchData={match} pronosticData={pronosticData} tournamentData={tournament} />
       <Text style={styles.matchDetails}>Match Events</Text>
       <MatchEvents events={match.events} />
