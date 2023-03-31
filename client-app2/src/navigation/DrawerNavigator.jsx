@@ -1,9 +1,7 @@
 // import "react-native-gesture-handler";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { DrawerContent, Drawer, createDrawerNavigator } from '@react-navigation/drawer';
 import Home from './screens/HomeScreen/Home';
 import { NavigationContainer } from "@react-navigation/native";
-import { Swipeable } from 'react-native-gesture-handler';
-import { View, Text, TouchableOpacity } from 'react-native';
 import Profile from './screens/ProfileScreen/Profile';
 import BrowseTournaments from './screens/BrowseTournamentsScreens/BrowseTournaments';
 import CreateTournament from './screens/CreateTournamentScreen/CreateTournament';
@@ -16,21 +14,13 @@ import Tournament from '../components/Tournament';
 import Footer from '../components/Footer';
 
 
-const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
+
+    const Drawer = createDrawerNavigator();
+
     return (
-//    <Swipeable
-//       renderLeftActions={() => (
-//         <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.closeDrawer())}>
-//           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//             {/* <MaterialIcons name="menu" size={24} color="white" /> */}
-//             <Text>close</Text>
-//           </View>
-//         </TouchableOpacity>
-//       )}
-//       overshootLeft={false}
-//     >
+
     <NavigationContainer>
     <Drawer.Navigator>
         <Drawer.Screen name="Home" component={Home} options={{drawerItemStyle: { height: 0 }}}/>
