@@ -5,11 +5,17 @@ import DrawerNavigator from "./src/navigation/DrawerNavigator";
 import Registration from "./src/navigation/screens/RegistrationScreen/Registration";
 
 const App = () => {
+  const isUserLogged = false;
   return (
     <>
-      {/* <DrawerNavigator />
-      <Toast /> */}
-      <Registration/>
+      {isUserLogged ? (
+        <>
+          <DrawerNavigator />
+          <Toast />
+        </>
+      ) : (
+        <Registration />
+      )}
     </>
   );
 };
