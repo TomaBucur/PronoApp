@@ -85,7 +85,7 @@ function Registration() {
     <View style={styles.container}>
       <Animated.View style={[StyleSheet.absoluteFill, imageAnimatedStyle]}>
         <Svg height={height + 100} width={width}>
-          <ClipPath>
+          <ClipPath id="clipPathId">
             <Ellipse cx={width / 2} rx={height} ry={height + 100} />
           </ClipPath>
           <Image
