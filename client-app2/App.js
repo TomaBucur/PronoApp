@@ -7,9 +7,9 @@ import Registration from "./src/navigation/screens/RegistrationScreen/Registrati
 const App = () => {
   return (
     <>
-      {/* <DrawerNavigator />
-      <Toast /> */}
-      <Registration/>
+      <DrawerNavigator />
+      <Toast />
+      {/* <Registration/> */}
     </>
   );
 };

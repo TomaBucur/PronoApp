@@ -21,7 +21,7 @@ namespace PronoFuture.Models
         public Championship Championship { get; set; }
         public int UserId { get; set; }
         public virtual ICollection<User> Users { get; set; }
-        public int HostUserId { get; set; }
+        public string HostUserId { get; set; }
         public User HostUser { get; set; }
     }
 }
