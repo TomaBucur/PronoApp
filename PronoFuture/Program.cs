@@ -42,10 +42,10 @@ builder.Services.AddAuthentication(auth =>
     {
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidAudience = "",
-        ValidIssuer = "",
+        ValidAudience = builder.Configuration["AuthSettings:Audience"],
+        ValidIssuer = builder.Configuration["AuthSettings:Issuer"],
         RequireExpirationTime = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the key used for encryption")),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("AuthSettings:Key")),
         ValidateIssuerSigningKey = true
     };
 });
@@ -62,6 +62,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

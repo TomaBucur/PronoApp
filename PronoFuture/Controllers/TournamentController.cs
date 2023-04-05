@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PronoFuture.Interfaces;
 using PronoFuture.Models;
@@ -7,6 +8,7 @@ namespace PronoFuture.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    //[Authorize]
     public class TournamentController : ControllerBase
     {
         private readonly ITournamentRepository _tournamentRepository;
@@ -29,7 +31,7 @@ namespace PronoFuture.Controllers
             return Ok(tournament);
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public IActionResult GetAllTournaments()
         {
             var tournaments = _tournamentRepository.GetAllTournaments();

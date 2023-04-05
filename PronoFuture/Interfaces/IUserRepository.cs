@@ -5,6 +5,8 @@ namespace PronoFuture.Interfaces
 {
     public interface IUserRepository
     {
-        Task<UserManagerResponse> RegisterUserAsync(UserDTO model);
+        Task<UserManagerResponse> RegisterUserAsync(RegisterUserDTO model);
+
+        Task<UserManagerResponse> LoginUserAsync(LoginUserDTO model);
     }
 }

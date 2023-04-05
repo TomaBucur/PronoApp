@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PronoFuture.DTOs
 {
-    public class UserDTO
+    public class RegisterUserDTO
     {
         [Required]
         [StringLength(15)]

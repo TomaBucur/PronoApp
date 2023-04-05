@@ -18,7 +18,7 @@ namespace PronoFuture.Controllers
         }
         // /api/auth/register   <- ruta
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterAsync([FromBody]UserDTO model)
+        public async Task<IActionResult> RegisterAsync([FromBody]RegisterUserDTO model)
         {
             if(ModelState.IsValid)
             {
