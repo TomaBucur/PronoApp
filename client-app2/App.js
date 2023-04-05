@@ -9,19 +9,6 @@ import UserTournaments from "./src/navigation/screens/UserTournamentsScreen/User
 import AboutUs from "./src/navigation/screens/AboutUsScreen/AboutUs";
 
 const App = () => {
-<<<<<<< HEAD
-  const isUserLogged = false;
-  return (
-    <>
-      {isUserLogged ? (
-        <>
-          <DrawerNavigator />
-          <Toast />
-        </>
-      ) : (
-        <Registration />
-      )}
-=======
   const [token] = useAtom(userState.token);
 
   return token ? (
@@ -43,7 +30,6 @@ const App = () => {
   ) : (
     <>
       <Registration />
->>>>>>> e14c95ef788a1968334629031ac5bb9c68991a92
     </>
   );
 };
