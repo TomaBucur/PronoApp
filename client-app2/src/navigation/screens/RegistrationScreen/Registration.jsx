@@ -17,13 +17,13 @@ function Registration() {
   const { height, width } = Dimensions.get("window");
   const imagePosition = useSharedValue(1);
   const formButtonScale = useSharedValue(1);
-  const { isRegistering, setIsRegistering } = useState();
+  const [isRegistering, setIsRegistering] = useState();
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     const interpolation = interpolate(
       imagePosition.value,
       [0, 1],
-      [-height / 2, 0]
+      [-height / 1.75, 0]
     );
     return {
       transform: [
