@@ -11,9 +11,9 @@ namespace PronoFuture.Repository
 
     public class TournamentRepository : ITournamentRepository
     {
-        private readonly AppDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public TournamentRepository(AppDbContext dbContext)
+        public TournamentRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -6,9 +6,9 @@ namespace PronoFuture.Repository
 {
     public class MatchRepository : IMatchRepository
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public MatchRepository(AppDbContext context)
+        public MatchRepository(ApplicationDbContext context)
         {
             _context = context;
         }

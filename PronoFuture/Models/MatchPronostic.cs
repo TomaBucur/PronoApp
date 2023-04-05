@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public int MatchId { get; set; }
         public Match Match { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
         public int ChampionshipId { get; set; }
         public Championship Championship { get; set; }

@@ -1,18 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PronoFuture.Models;
 
 namespace PronoFuture.Data
 {
-    public class AppDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<Championship> Championships { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<MatchPronostic> MatchPronostics { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
-        public DbSet<User> Users { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
