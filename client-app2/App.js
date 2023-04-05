@@ -16,7 +16,7 @@ const App = () => {
       <DrawerNavigator />
       <Toast />
     </>
-  ) : Platform.OS === "ios" ? (
+  ) : Platform.OS === "j" ? (
     <Text
       style={{
         marginTop: "auto",
