@@ -5,8 +5,6 @@ import DrawerNavigator from "./src/navigation/DrawerNavigator";
 import Registration from "./src/navigation/screens/RegistrationScreen/Registration";
 import { useAtom } from "jotai";
 import { userState } from "./state/stateManagement";
-import UserTournaments from "./src/navigation/screens/UserTournamentsScreen/UserTournaments";
-import AboutUs from "./src/navigation/screens/AboutUsScreen/AboutUs";
 
 const App = () => {
   const [token] = useAtom(userState.token);

@@ -12,8 +12,41 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
+import axios from "axios";
 
 function Registration() {
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [username, setUsername] = useState();
+
+  const handleEmailChange = (value) => {
+    setEmail(value);
+  };
+  const handlePasswordChange = (value) => {
+    setPassword(value);
+  };
+  const handleUsernameChange = (value) => {
+    setUsername(value);
+  };  
+
+  const handleSubmit = () => {
+    const data ={
+      Email: email,
+      Password: password,
+      userName: username,
+    };
+    const url = "your-backend-url";
+    axios.post(url, data)
+      .then((result) => {
+        alert(result.data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
+
   const { height, width } = Dimensions.get("window");
   const imagePosition = useSharedValue(1);
   const formButtonScale = useSharedValue(1);
@@ -118,12 +151,14 @@ function Registration() {
             placeholder="Email"
             placeholderTextColor="black"
             style={styles.textInput}
+            onChange={(e) => handleEmailChange(e.target.value)}
           />
           {isRegistering && (
             <TextInput
-              placeholder="Full Name"
+              placeholder="User Name"
               placeholderTextColor="black"
               style={styles.textInput}
+              onChange={(e) => handleUsernameChange(e.target.value)}
             />
           )}
 
@@ -131,6 +166,7 @@ function Registration() {
             placeholder="Password"
             placeholderTextColor="black"
             style={styles.textInput}
+            onChange={(e) => handlePasswordChange(e.target.value)}
           />
           <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
             <Pressable
@@ -141,7 +177,8 @@ function Registration() {
                 ))
               }
             >
-              <Text style={styles.buttonText}>
+              <Text style={styles.buttonText}
+              onPress={() => handleSubmit}>
                 {isRegistering ? "REGISTER" : "LOG IN"}
               </Text>
             </Pressable>
