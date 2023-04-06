@@ -17,7 +17,7 @@ namespace PronoFuture.Controllers
             _userRepository = userRepository;
         }
         // /api/auth/register   <- ruta
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> RegisterAsync([FromBody]RegisterUserDTO model)
         {
             if(ModelState.IsValid)
@@ -32,6 +32,23 @@ namespace PronoFuture.Controllers
             }
 
             return BadRequest("Some properties are not valid"); //Status code 400
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginAsync([FromBody]LoginUserDTO model)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = await _userRepository.LoginUserAsync(model);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
+            }
+
+            return BadRequest("Some properties are not valid");
         }
     }
 }

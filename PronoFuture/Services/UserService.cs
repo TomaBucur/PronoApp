@@ -4,9 +4,9 @@ using PronoFuture.DTOs;
 using PronoFuture.Helper;
 using PronoFuture.Interfaces;
 using PronoFuture.Models;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace PronoFuture.Services
 {
@@ -55,7 +55,8 @@ namespace PronoFuture.Services
                 audience: _configuration["AuthSettings:Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddDays(30),
-                signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
+                signingCredentials : new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
+
 
             string tokenAsString = new JwtSecurityTokenHandler().WriteToken(token);
 
