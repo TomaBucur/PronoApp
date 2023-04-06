@@ -15,9 +15,9 @@ import Animated, {
 import axios from "axios";
 
 const defaultValues = {
-  email,
-  password,
-  username
+  email: "",
+  password: "",
+  username: "",
 }
 
 function Registration() {
@@ -27,27 +27,14 @@ function Registration() {
   const { email, password, username } = formFields;
 
 
-  const handleFormChange = (e) => {
+  const handleFormChange = (name, value) => {
 
-    const { name, value } = e.target;
+    console.log(formFields)
+    console.log(name, value)
 
     setFormFields({...formFields, [name]: value} );
   }
 
-
-  // const [email, setEmail] = useState();
-  // const [password, setPassword] = useState();
-  // const [username, setUsername] = useState();
-
-  // const handleEmailChange = (value) => {
-  //   setEmail(value);
-  // };
-  // const handlePasswordChange = (value) => {
-  //   setPassword(value);
-  // };
-  // const handleUsernameChange = (value) => {
-  //   setUsername(value);
-  // };  
 
   const handleSubmit = () => {
     const data ={
@@ -170,14 +157,18 @@ function Registration() {
             placeholder="Email"
             placeholderTextColor="black"
             style={styles.textInput}
-            onChange={handleFormChange}
+            name="email"
+            value={email}
+            onChangeText={(v) => handleFormChange("email", v)}
           />
           {isRegistering && (
             <TextInput
               placeholder="User Name"
               placeholderTextColor="black"
               style={styles.textInput}
-              onChange={handleFormChange}
+              name="username"
+              value={username}
+              onChangeText={(v) => handleFormChange("username", v)}
             />
           )}
 
@@ -185,7 +176,9 @@ function Registration() {
             placeholder="Password"
             placeholderTextColor="black"
             style={styles.textInput}
-            onChange={handleFormChange}
+            name="password"
+            value={password}
+            onChangeText={(v) => handleFormChange("password", v)}
           />
           <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
             <Pressable
