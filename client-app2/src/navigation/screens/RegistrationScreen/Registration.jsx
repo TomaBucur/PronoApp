@@ -14,21 +14,40 @@ import Animated, {
 } from "react-native-reanimated";
 import axios from "axios";
 
+const defaultValues = {
+  email,
+  password,
+  username
+}
+
 function Registration() {
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [username, setUsername] = useState();
+  const [formFields, setFormFields] = useState(defaultValues);
 
-  const handleEmailChange = (value) => {
-    setEmail(value);
-  };
-  const handlePasswordChange = (value) => {
-    setPassword(value);
-  };
-  const handleUsernameChange = (value) => {
-    setUsername(value);
-  };  
+  const { email, password, username } = formFields;
+
+
+  const handleFormChange = (e) => {
+
+    const { name, value } = e.target;
+
+    setFormFields({...formFields, [name]: value} );
+  }
+
+
+  // const [email, setEmail] = useState();
+  // const [password, setPassword] = useState();
+  // const [username, setUsername] = useState();
+
+  // const handleEmailChange = (value) => {
+  //   setEmail(value);
+  // };
+  // const handlePasswordChange = (value) => {
+  //   setPassword(value);
+  // };
+  // const handleUsernameChange = (value) => {
+  //   setUsername(value);
+  // };  
 
   const handleSubmit = () => {
     const data ={
@@ -151,14 +170,14 @@ function Registration() {
             placeholder="Email"
             placeholderTextColor="black"
             style={styles.textInput}
-            onChange={(e) => handleEmailChange(e.target.value)}
+            onChange={handleFormChange}
           />
           {isRegistering && (
             <TextInput
               placeholder="User Name"
               placeholderTextColor="black"
               style={styles.textInput}
-              onChange={(e) => handleUsernameChange(e.target.value)}
+              onChange={handleFormChange}
             />
           )}
 
@@ -166,7 +185,7 @@ function Registration() {
             placeholder="Password"
             placeholderTextColor="black"
             style={styles.textInput}
-            onChange={(e) => handlePasswordChange(e.target.value)}
+            onChange={handleFormChange}
           />
           <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
             <Pressable
