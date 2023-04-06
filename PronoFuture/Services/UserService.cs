@@ -55,7 +55,7 @@ namespace PronoFuture.Services
                 audience: _configuration["AuthSettings:Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddDays(30),
-                signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
 
             string tokenAsString = new JwtSecurityTokenHandler().WriteToken(token);
 

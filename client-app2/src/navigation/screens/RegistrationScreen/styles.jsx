@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     justifyContent: "center",
-    height: height / 3,
+    height: height / 2.5,
+    paddingBottom: 20,   
   },
   textInput: {
     height: 50,
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius:3.84,
-    elevation: 5,    
+    elevation: 5, 
   },
   formInput: {
     marginBottom: 20,
