@@ -5,6 +5,7 @@ import styles from "./styles";
 import { TextInput } from "react-native-gesture-handler";
 import Animated, {
   interpolate,
+  log,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
@@ -13,39 +14,30 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import axios from "axios";
+import Api from "../../../utilities/Api";
+
+const defaultValues = {
+  email: "",
+  password: "",
+  username: "",
+}
+
+const baseURL = "http://192.168.1.137:5002/api/"
 
 function Registration() {
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [username, setUsername] = useState();
+  const [formFields, setFormFields] = useState(defaultValues);
 
-  const handleEmailChange = (value) => {
-    setEmail(value);
-  };
-  const handlePasswordChange = (value) => {
-    setPassword(value);
-  };
-  const handleUsernameChange = (value) => {
-    setUsername(value);
-  };  
+  const { email, password, username } = formFields;
 
-  const handleSubmit = () => {
-    const data ={
-      Email: email,
-      Password: password,
-      userName: username,
-    };
-    const url = "your-backend-url";
-    axios.post(url, data)
-      .then((result) => {
-        alert(result.data);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
 
+  const handleFormChange = (name, value) => {
+
+    console.log(formFields)
+    console.log(name, value)
+
+    setFormFields({...formFields, [name]: value} );
+  }
 
   const { height, width } = Dimensions.get("window");
   const imagePosition = useSharedValue(1);
@@ -100,6 +92,46 @@ function Registration() {
     };
   });
 
+  const handleRegisterSubmit = async () => {
+    console.log("Ciupapi")
+    console.log(formFields); // Check the current values of formFields
+    const data = {
+      Email: email,
+      Password: password,
+      Username: username,
+    };
+    console.log(data); // Check the values of the data object being sent to the server
+    try {
+      const url = "${baseURL}Auth/Register";
+      const response = await axios.post(url, data);
+      console.log(response.data);
+      alert(response.data);
+    } catch (error) {
+      console.log(error);
+      alert(`Error: ${error.message}`);
+    }
+  };
+  
+  
+
+
+  const handleLoginSubmit = async () => {
+    const data = {
+      Email: email,
+      Password: password,
+    };
+    try {
+      const url = "${baseURL}Auth/Login";
+      const response = await axios.post(url, data);
+      console.log(response.data);
+      alert(response.data);
+    } catch (error) {
+      console.log(error);
+      alert(`Error: ${error.message}`);
+    }
+  };
+  
+
   const loginHandler = () => {
     imagePosition.value = 0;
     if (isRegistering) {
@@ -132,7 +164,7 @@ function Registration() {
         <Animated.View
           style={[styles.closeButtonContainer, closeButtonContainerStyle]}
         >
-          <Text onPress={() => (imagePosition.value = 1)}>X</Text>
+          <Text onPress={() => (imagePosition.value = 1)}>Back</Text>
         </Animated.View>
       </Animated.View>
       <View style={styles.bottomContainer}>
@@ -148,17 +180,22 @@ function Registration() {
         </Animated.View>
         <Animated.View style={[styles.formInput, formAnimatedStyle]}>
           <TextInput
+            keyboardType="email-address"
+            autoCapitalize="none"
+            value={email}
             placeholder="Email"
             placeholderTextColor="black"
             style={styles.textInput}
-            onChange={(e) => handleEmailChange(e.target.value)}
-          />
+            onChangeText={(v) => handleFormChange("email", v)}          />
           {isRegistering && (
             <TextInput
+
               placeholder="User Name"
               placeholderTextColor="black"
               style={styles.textInput}
-              onChange={(e) => handleUsernameChange(e.target.value)}
+              name="username"
+              value={username}
+              onChangeText={(v) => handleFormChange("username", v)}
             />
           )}
 
@@ -166,7 +203,9 @@ function Registration() {
             placeholder="Password"
             placeholderTextColor="black"
             style={styles.textInput}
-            onChange={(e) => handlePasswordChange(e.target.value)}
+            name="password"
+            value={password}
+            onChangeText={(v) => handleFormChange("password", v)}
           />
           <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
             <Pressable
@@ -176,11 +215,18 @@ function Registration() {
                   withSpring(1)
                 ))
               }
-            >
-              <Text style={styles.buttonText}
-              onPress={() => handleSubmit}>
-                {isRegistering ? "REGISTER" : "LOG IN"}
-              </Text>
+            >{isRegistering ? (
+
+              <Pressable onPress={handleRegisterSubmit}>
+                <Text style={styles.buttonText}>REGISTER</Text>
+              </Pressable>
+
+            ) : (
+              <Pressable  onPress={handleLoginSubmit}>
+                <Text style={styles.buttonText} >Login</Text>
+              </Pressable>
+            )}
+
             </Pressable>
           </Animated.View>
         </Animated.View>
