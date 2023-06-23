@@ -5,7 +5,6 @@ It's a social pronostics application meant for people who love sports, but mostl
 
 
 ## Table of Contents
-- [RoadMap](#roadmap)
 - [About Me](#about-me)
 - [Tech Stack](#tech-stack)
 - [Deployment](#deployment)
