@@ -2,10 +2,9 @@
 
 It's a social pronostics application meant for people who love sports, but mostly football enthusiasts at this moment(we plan to grow to implement this concept on other sports too). You can compete against others football lovers and see who can predict the closest leagues and cups matches between well known teams. By simply join a tournament of your choice and select the scores you feel that are most appropriate for the matches to close with you can be prove to the other players from the tournament and maybe from other cities/countries and who knows, maybe continents that you are the best when it comes to predictions. Beside the main futures of pronostics, you can chat and make new friends inside the application.
 
-For v2.0 you'll be able to use the application daily by creating a private championship with your friends and compete between eachother on a single match on a variety of options like goals/cards/offsides/shots on target/substitutions etc. 
+
 
 ## Table of Contents
-- [Features](#features)
 - [RoadMap](#roadmap)
 - [About Me](#about-me)
 - [Tech Stack](#tech-stack)
@@ -15,53 +14,7 @@ For v2.0 you'll be able to use the application daily by creating a private champ
 - [Feedback](#feedback)
 - [License](#license)
 
-## Features
 
-** At this point the application doesn't have any functionality beside front-end(which is in testing phase at this moment) **
-** This section is updated daily from the moment v1.0A starts **
-
-## RoadMap
-
-** Application is still in development, this are the the futures for Alpha phase of application **
-
-** v1.0A **
-- Create account
-- Login with account
-- Create/Update/Cancel Tournaments
-- Browse Tournaments
-** v2.0A **
-- Participate in an existing Tournament public or private via secret key
-** v2.1A **
-- Set Pronostics for all matches
-** v2.2A **
-- Observe the Leaderboard in Tournament
-- Observe people who participate in a certain Tournament
-** v3.0A **
-- Edit Profile
-- Navigate through users' profiles
-** v4.0A **
-- Filter tournaments by championship/Open to registration/On going/Closed to Registration/all activities
-
-** At this point the application is testable and we will commit to version Beta **
-** V1.0B **
-- Follow/Unfollow users
-- Observe the followers/followings of a specific user
-** v1.1B **
-- Add photos for profile
-** v1.2B **
-- Earn badgets/pins as a reward for in application milestone
-** v1.3B **
-- Tournament chat
-- Users chat
-** 1.4B **
-- Push Notifications
-** v1.5B **
-- World Leaderboard
-
-** Here it comes the second part of the application which is meant for daily use **
-
-** V2.0PDB **
-- Starting development of PronoDay Beta 
 
 ## About Me
 
